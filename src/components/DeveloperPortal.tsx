@@ -136,7 +136,7 @@ python -m pipeline_w.multiseed`;
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {references.map((r) => (
               <div key={r.id} className="glass-card p-4 text-xs text-slate-700 leading-relaxed hover:border-slate-300 transition-all flex items-start gap-3">
-                <span className="font-mono text-[#0284c7] font-bold text-sm">[{r.id}]</span>
+                <span className="font-mono text-ink-sky font-bold text-sm">[{r.id}]</span>
                 <div className="flex-1">
                   <span className="text-[10px] font-mono px-1.5 py-0.2 rounded badge-indigo font-bold mr-2 inline-block mb-1">
                     {r.venue}

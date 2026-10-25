@@ -70,7 +70,7 @@ export default function ProblemStatement() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* Card 1 */}
           <div className="glass-card p-6 border-t-2 border-t-[#f43f5e]">
-            <div className="w-12 h-12 rounded-xl bg-[#f43f5e]/15 text-[#e11d48] flex items-center justify-center mb-5 border border-[#f43f5e]/25">
+            <div className="w-12 h-12 rounded-xl bg-[#f43f5e]/15 text-ink-rose flex items-center justify-center mb-5 border border-[#f43f5e]/25">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
               </svg>
@@ -79,14 +79,14 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               &gt; 90% of cascades terminate in under 10 retweets, while rare viral threads explode across multiple orders of magnitude. Training in linear count space creates severe gradient instability.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-[#0284c7]">
+            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-sky">
               Target: <span className="text-slate-900">y = log₂(ΔP + 1)</span> (MSLE)
             </div>
           </div>
 
           {/* Card 2 */}
           <div className="glass-card p-6 border-t-2 border-t-[#f59e0b]">
-            <div className="w-12 h-12 rounded-xl bg-[#f59e0b]/15 text-[#d97706] flex items-center justify-center mb-5 border border-[#f59e0b]/25">
+            <div className="w-12 h-12 rounded-xl bg-[#f59e0b]/15 text-ink-amber flex items-center justify-center mb-5 border border-[#f59e0b]/25">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
@@ -96,14 +96,14 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               Social spread exhibits irregular latencies and prolonged user dormancy followed by sudden bursts. Discrete snapshotting discards exact inter-arrival ordering and latency deltas.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-[#d97706]">
+            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-amber">
               Tracking: <span className="text-slate-900">Δt_edge, Δt_motif, T_idle</span>
             </div>
           </div>
 
           {/* Card 3 */}
           <div className="glass-card p-6 border-t-2 border-t-[#06b6d4]">
-            <div className="w-12 h-12 rounded-xl bg-[#06b6d4]/15 text-[#0284c7] flex items-center justify-center mb-5 border border-[#06b6d4]/25">
+            <div className="w-12 h-12 rounded-xl bg-[#06b6d4]/15 text-ink-sky flex items-center justify-center mb-5 border border-[#06b6d4]/25">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path d="M6 3v12M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 9v12" />
               </svg>
@@ -112,7 +112,7 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               Cascades are not linear paths. Broadcast star hubs (celebrity reposts) carry distinct momentum compared to deep conversational chains or bilateral reciprocal dyads.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-[#059669]">
+            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-emerald">
               Motifs: <span className="text-slate-900">Star, Chain, Dyad, 3-Cycle</span>
             </div>
           </div>
@@ -131,13 +131,13 @@ export default function ProblemStatement() {
           {/* Formatted Mathematical Block */}
           <div className="bg-slate-50 border border-[#6366f1]/30 rounded-xl p-5 mb-5 shadow-inner">
             <div className="text-center font-mono text-base sm:text-lg text-slate-900 mb-3 flex items-center justify-center flex-wrap gap-2">
-              <span className="font-bold text-[#0284c7]">E</span>
+              <span className="font-bold text-ink-sky">E</span>
               <span>=</span>
               <span>&#123;</span>
               <span>(u<sub>i</sub>, v<sub>i</sub>, t<sub>i</sub>)</span>
               <span>&#125;<sub>i=1</sub><sup>N</sup></span>
               <span className="text-slate-600 mx-3">with</span>
-              <span className="text-[#059669]">0 &le; t<sub>1</sub> &le; t<sub>2</sub> &le; &hellip; &le; t<sub>N</sub></span>
+              <span className="text-ink-emerald">0 &le; t<sub>1</sub> &le; t<sub>2</sub> &le; &hellip; &le; t<sub>N</sub></span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-200 text-xs text-slate-600">
               <div className="flex items-center gap-2">
@@ -156,7 +156,7 @@ export default function ProblemStatement() {
           </div>
 
           <p className="text-slate-700 text-sm leading-relaxed">
-            Where user <em className="text-slate-900 font-medium">v<sub>i</sub></em> reshares from parent <em className="text-slate-900 font-medium">u<sub>i</sub></em> at continuous timestamp <em className="text-slate-900 font-medium">t<sub>i</sub></em>. Given events in early observation window <code className="text-[#0284c7] font-mono px-1.5 py-0.5 rounded bg-slate-50">t &isin; [0, T_obs]</code> (15m or 1h), predict future popularity increment <code className="text-[#0284c7] font-mono px-1.5 py-0.5 rounded bg-slate-50">&Delta;P = P_24h &minus; P_obs</code> at <code className="text-[#0284c7] font-mono px-1.5 py-0.5 rounded bg-slate-50">T_target = 24h</code>.
+            Where user <em className="text-slate-900 font-medium">v<sub>i</sub></em> reshares from parent <em className="text-slate-900 font-medium">u<sub>i</sub></em> at continuous timestamp <em className="text-slate-900 font-medium">t<sub>i</sub></em>. Given events in early observation window <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">t &isin; [0, T_obs]</code> (15m or 1h), predict future popularity increment <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">&Delta;P = P_24h &minus; P_obs</code> at <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">T_target = 24h</code>.
           </p>
         </div>
 
@@ -209,8 +209,8 @@ export default function ProblemStatement() {
                     <td className="py-3.5 px-4">
                       <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-semibold ${
                         m.highlight
-                          ? 'bg-[#10b981]/20 text-[#059669] border border-[#10b981]/40 shadow-sm shadow-[#10b981]/20'
-                          : 'bg-[#10b981]/10 text-[#059669] border border-[#10b981]/25'
+                          ? 'bg-[#10b981]/20 text-ink-emerald border border-[#10b981]/40 shadow-sm shadow-[#10b981]/20'
+                          : 'bg-[#10b981]/10 text-ink-emerald border border-[#10b981]/25'
                       }`}>
                         {m.casmotifAdvantage}
                       </span>

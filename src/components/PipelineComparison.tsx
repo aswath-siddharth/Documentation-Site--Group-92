@@ -71,7 +71,7 @@ export default function PipelineComparison() {
               {/* Step 1 */}
               <div className="glass-card p-6 border-t-2 border-t-[#6366f1] relative group flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-[#6366f1]/20 border border-[#6366f1]/40 text-[#4f46e5] font-bold text-xs flex items-center justify-center mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-[#6366f1]/20 border border-[#6366f1]/40 text-ink-indigo font-bold text-xs flex items-center justify-center mb-4">
                     01
                   </div>
                   <h4 className="font-display font-bold text-slate-900 text-base mb-1.5">Raw Stream Ingestion</h4>
@@ -89,7 +89,7 @@ export default function PipelineComparison() {
               {/* Step 2 */}
               <div className="glass-card p-6 border-t-2 border-t-[#06b6d4] relative group flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-[#06b6d4]/20 border border-[#06b6d4]/40 text-[#0284c7] font-bold text-xs flex items-center justify-center mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-[#06b6d4]/20 border border-[#06b6d4]/40 text-ink-sky font-bold text-xs flex items-center justify-center mb-4">
                     02
                   </div>
                   <h4 className="font-display font-bold text-slate-900 text-base mb-1.5">Dynamic CSR Engine</h4>
@@ -107,7 +107,7 @@ export default function PipelineComparison() {
               {/* Step 3 */}
               <div className="glass-card p-6 border-t-2 border-t-[#10b981] relative group flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/20 border border-[#10b981]/40 text-[#059669] font-bold text-xs flex items-center justify-center mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/20 border border-[#10b981]/40 text-ink-emerald font-bold text-xs flex items-center justify-center mb-4">
                     03
                   </div>
                   <h4 className="font-display font-bold text-slate-900 text-base mb-1.5">Causal Extraction</h4>
@@ -125,7 +125,7 @@ export default function PipelineComparison() {
               {/* Step 4 */}
               <div className="glass-card p-6 border-t-2 border-t-[#f59e0b] relative group flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-[#f59e0b]/20 border border-[#f59e0b]/40 text-[#d97706] font-bold text-xs flex items-center justify-center mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-[#f59e0b]/20 border border-[#f59e0b]/40 text-ink-amber font-bold text-xs flex items-center justify-center mb-4">
                     04
                   </div>
                   <h4 className="font-display font-bold text-slate-900 text-base mb-1.5">Attentive BiGRU</h4>
@@ -167,7 +167,7 @@ export default function PipelineComparison() {
                     <h4 className="font-display font-bold text-slate-900 text-lg">Pipeline A</h4>
                     <span className="text-xs font-mono px-2 py-0.5 rounded badge-cyan">T ≤ 15 min</span>
                   </div>
-                  <div className="text-sm font-semibold text-[#0284c7] mb-2">Streaming Feature Engine</div>
+                  <div className="text-sm font-semibold text-ink-sky mb-2">Streaming Feature Engine</div>
                   <p className="text-slate-600 text-xs leading-relaxed mb-4">
                     Converts early comment streams into continuous N × 20 matrices using dynamic CSR and Worst-Case Optimal Joins (WCOJ) Leapfrog Triejoin iterators.
                   </p>
@@ -183,7 +183,7 @@ export default function PipelineComparison() {
                     <h4 className="font-display font-bold text-slate-900 text-lg">Pipeline B</h4>
                     <span className="text-xs font-mono px-2 py-0.5 rounded badge-indigo">T = 24 hours</span>
                   </div>
-                  <div className="text-sm font-semibold text-[#4f46e5] mb-2">Ground-Truth Target Engine</div>
+                  <div className="text-sm font-semibold text-ink-indigo mb-2">Ground-Truth Target Engine</div>
                   <p className="text-slate-600 text-xs leading-relaxed mb-4">
                     Flattens 24h thread history, discarding late comments (&gt;86,400s). Groups posts by subreddit to compute dynamic 95th percentile (P95) volume cutoffs to assign binary virality labels.
                   </p>
@@ -199,7 +199,7 @@ export default function PipelineComparison() {
                     <h4 className="font-display font-bold text-slate-900 text-lg">Pipeline C</h4>
                     <span className="text-xs font-mono px-2 py-0.5 rounded badge-emerald">PyTorch Neural</span>
                   </div>
-                  <div className="text-sm font-semibold text-[#059669] mb-2">Hybrid Neural Learning Engine</div>
+                  <div className="text-sm font-semibold text-ink-emerald mb-2">Hybrid Neural Learning Engine</div>
                   <p className="text-slate-600 text-xs leading-relaxed mb-4">
                     Inner joins Pipeline A and B on <code className="text-slate-800 font-mono bg-slate-50 px-1 py-0.5 rounded">post_id</code>. Batches variable sequences into [B, K_max, 20] tensors. Trains BiGRU + Attentive Pooling with Focal Loss.
                   </p>

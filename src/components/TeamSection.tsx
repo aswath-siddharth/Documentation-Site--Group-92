@@ -65,7 +65,7 @@ export default function TeamSection() {
               <h3 className="font-display font-bold text-2xl text-slate-900">Mr. Dayanand V</h3>
               <span className="text-xs font-mono px-2.5 py-0.5 rounded-full badge-cyan font-semibold">Faculty Guide</span>
             </div>
-            <div className="text-sm font-semibold text-[#0284c7]">
+            <div className="text-sm font-semibold text-ink-sky">
               Assistant Professor • Department of Computer Science and Engineering
             </div>
             <div className="text-xs text-slate-600 mt-0.5">
@@ -97,7 +97,7 @@ export default function TeamSection() {
                   </div>
                 </div>
                 <h4 className="font-display font-bold text-base text-slate-900 mb-1 leading-snug">{m.name}</h4>
-                <div className="font-mono text-[11px] text-[#0284c7] mb-2 px-2 py-0.5 rounded bg-slate-50 inline-block">
+                <div className="font-mono text-[11px] text-ink-sky mb-2 px-2 py-0.5 rounded bg-slate-50 inline-block">
                   {m.roll}
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function TeamSection() {
         </div>
 
         {/* Technical Enrichment Activity */}
-        <div className="glass-panel p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4 border border-[#10b981]/30 bg-gradient-to-r from-[#10b981]/10 via-white to-transparent">
+        <div className="glass-panel p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4 border border-[#10b981]/30 bg-gradient-to-r from-[#10b981]/10 via-[var(--bg-elevated)] to-transparent">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-1">
               <span className="w-2 h-2 rounded-full bg-[#34d399]" />

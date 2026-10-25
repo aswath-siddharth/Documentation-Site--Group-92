@@ -15,7 +15,7 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         {/* Academic Project Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#06b6d4]/10 border border-[#06b6d4]/30 text-[#0284c7] text-xs font-semibold mb-8 shadow-lg shadow-[#06b6d4]/15 backdrop-blur-md hover:border-[#06b6d4]/50 transition-all">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#06b6d4]/10 border border-[#06b6d4]/30 text-ink-sky text-xs font-semibold mb-8 shadow-lg shadow-[#06b6d4]/15 backdrop-blur-md hover:border-[#06b6d4]/50 transition-all">
           <span className="w-2 h-2 rounded-full bg-[#06b6d4] pulse-indicator" />
           <span className="tracking-wide">23CSE498 Project Phase 2 • Team 92 • Amrita Vishwa Vidyapeetham</span>
         </div>
@@ -37,9 +37,9 @@ export default function Hero() {
         <div className="flex flex-wrap items-center justify-center gap-4 mb-20">
           <a
             href="#simulator"
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#6366f1] via-[#4f46e5] to-[#4338ca] hover:brightness-110 shadow-xl shadow-[#6366f1]/35 transition-all hover:-translate-y-0.5 active:translate-y-0 border border-slate-200"
+            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#6366f1] via-[#4f46e5] to-[#4338ca] hover:brightness-110 shadow-xl shadow-[#6366f1]/35 transition-all hover:-translate-y-0.5 active:translate-y-0 border border-white/10"
           >
-            <svg className="w-5 h-5 text-[#0284c7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+            <svg className="w-5 h-5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
               <circle cx="12" cy="12" r="10" />
               <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
             </svg>
@@ -50,7 +50,7 @@ export default function Hero() {
             href="#video-demo"
             className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all hover:-translate-y-0.5 backdrop-blur-md"
           >
-            <svg className="w-5 h-5 text-[#0284c7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-5 h-5 text-ink-sky" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
             <span>Watch Walkthrough Demo</span>
@@ -60,7 +60,7 @@ export default function Hero() {
             href="#benchmarks"
             className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-slate-800 bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-all hover:-translate-y-0.5 backdrop-blur-md"
           >
-            <svg className="w-5 h-5 text-[#059669]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-5 h-5 text-ink-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path d="M18 20V10M12 20V4M6 20v-6" />
             </svg>
             <span>Controlled Benchmarks</span>
@@ -71,8 +71,8 @@ export default function Hero() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
           <div className="glass-card p-6 relative overflow-hidden group border-t-2 border-t-[#38bdf8]">
             <div className="flex items-center justify-between mb-2">
-              <div className="font-display font-extrabold text-3xl sm:text-4xl text-[#0284c7]">49,824</div>
-              <div className="w-8 h-8 rounded-lg bg-[#38bdf8]/10 flex items-center justify-center text-[#0284c7]">
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-ink-sky">49,824</div>
+              <div className="w-8 h-8 rounded-lg bg-[#38bdf8]/10 flex items-center justify-center text-ink-sky">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -84,8 +84,8 @@ export default function Hero() {
 
           <div className="glass-card p-6 relative overflow-hidden group border-t-2 border-t-[#818cf8]">
             <div className="flex items-center justify-between mb-2">
-              <div className="font-display font-extrabold text-3xl sm:text-4xl text-[#4f46e5]">1.9845</div>
-              <div className="w-8 h-8 rounded-lg bg-[#818cf8]/10 flex items-center justify-center text-[#4f46e5]">
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-ink-indigo">1.9845</div>
+              <div className="w-8 h-8 rounded-lg bg-[#818cf8]/10 flex items-center justify-center text-ink-indigo">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -97,8 +97,8 @@ export default function Hero() {
 
           <div className="glass-card p-6 relative overflow-hidden group border-t-2 border-t-[#34d399]">
             <div className="flex items-center justify-between mb-2">
-              <div className="font-display font-extrabold text-3xl sm:text-4xl text-[#059669]">15 Min</div>
-              <div className="w-8 h-8 rounded-lg bg-[#34d399]/10 flex items-center justify-center text-[#059669]">
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-ink-emerald">15 Min</div>
+              <div className="w-8 h-8 rounded-lg bg-[#34d399]/10 flex items-center justify-center text-ink-emerald">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
@@ -111,8 +111,8 @@ export default function Hero() {
 
           <div className="glass-card p-6 relative overflow-hidden group border-t-2 border-t-[#c084fc]">
             <div className="flex items-center justify-between mb-2">
-              <div className="font-display font-extrabold text-3xl sm:text-4xl text-[#9333ea]">G<sub>t−</sub> Causal</div>
-              <div className="w-8 h-8 rounded-lg bg-[#c084fc]/10 flex items-center justify-center text-[#9333ea]">
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-ink-purple">G<sub>t−</sub> Causal</div>
+              <div className="w-8 h-8 rounded-lg bg-[#c084fc]/10 flex items-center justify-center text-ink-purple">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>

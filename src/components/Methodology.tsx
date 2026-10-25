@@ -187,21 +187,21 @@ export default function Methodology() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <div className="bg-slate-50 border border-[#38bdf8]/30 rounded-xl p-5 shadow-inner">
-                <div className="font-mono text-sm font-bold text-[#0284c7] mb-1">indptr [|V| + 1]</div>
+                <div className="font-mono text-sm font-bold text-ink-sky mb-1">indptr [|V| + 1]</div>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Offset pointer array where slice <code className="text-slate-800 font-mono bg-slate-50 px-1 py-0.5 rounded">[indptr[u] : indptr[u+1]]</code> marks the start and end offsets of node <em>u</em>&apos;s out-neighbors.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-[#818cf8]/30 rounded-xl p-5 shadow-inner">
-                <div className="font-mono text-sm font-bold text-[#4f46e5] mb-1">indices [|E|]</div>
+                <div className="font-mono text-sm font-bold text-ink-indigo mb-1">indices [|E|]</div>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Stores target neighbor IDs for directed outgoing edges in contiguous RAM buffers with zero pointer chasing and predictable CPU cache hits.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-[#34d399]/30 rounded-xl p-5 shadow-inner">
-                <div className="font-mono text-sm font-bold text-[#059669] mb-1">timestamps [|E|]</div>
+                <div className="font-mono text-sm font-bold text-ink-emerald mb-1">timestamps [|E|]</div>
                 <p className="text-slate-600 text-xs leading-relaxed">
                   Stores continuous-time arrival timestamp <em>t<sub>i</sub></em> for each edge, enabling microsecond inter-arrival delta computations.
                 </p>
@@ -216,7 +216,7 @@ export default function Methodology() {
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded badge-cyan">O(1) Complexity</span>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 my-2 font-mono text-sm text-[#0284c7]">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 my-2 font-mono text-sm text-ink-sky">
                   N<sub>out</sub>(u) = indices[indptr[u] : indptr[u+1]]
                 </div>
                 <p className="text-slate-600 text-xs">Direct zero-copy array slicing into contiguous RAM.</p>
@@ -229,7 +229,7 @@ export default function Methodology() {
                   </h4>
                   <span className="text-xs font-mono px-2 py-0.5 rounded badge-emerald">O(1) Complexity</span>
                 </div>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 my-2 font-mono text-sm text-[#059669]">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 my-2 font-mono text-sm text-ink-emerald">
                   deg<sub>out</sub>(u) = indptr[u+1] &minus; indptr[u]
                 </div>
                 <p className="text-slate-600 text-xs">Single-subtraction O(1) time without neighbor iteration.</p>
@@ -264,7 +264,7 @@ export default function Methodology() {
                       <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">
                         {m.col}
                       </span>
-                      <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-[#06b6d4]/20 text-[#0284c7] font-semibold border border-[#06b6d4]/30">
+                      <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-[#06b6d4]/20 text-ink-sky font-semibold border border-[#06b6d4]/30">
                         {m.complexity}
                       </span>
                     </div>
@@ -304,23 +304,23 @@ export default function Methodology() {
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#0284c7]">Col 0: motif_single</span>
+                    <span className="font-mono text-ink-sky">Col 0: motif_single</span>
                     <span className="text-slate-600">¬cycle ∧ ¬dyad ∧ ¬chain ∧ ¬star</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#0284c7]">Col 1: motif_star</span>
+                    <span className="font-mono text-ink-sky">Col 1: motif_star</span>
                     <span className="text-slate-600">deg_out(u) ≥ 1 on G_t−</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#0284c7]">Col 2: motif_chain</span>
+                    <span className="font-mono text-ink-sky">Col 2: motif_chain</span>
                     <span className="text-slate-600">depth(u) + 1 ≥ 3</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#0284c7]">Col 3: motif_dyad</span>
+                    <span className="font-mono text-ink-sky">Col 3: motif_dyad</span>
                     <span className="text-slate-600">u ∈ N_out(v) on G_t−</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#0284c7]">Col 4: motif_cycle</span>
+                    <span className="font-mono text-ink-sky">Col 4: motif_cycle</span>
                     <span className="text-slate-600">∃ w ∈ N_out(v) s.t. u ∈ N_out(w)</span>
                   </li>
                 </ul>
@@ -334,15 +334,15 @@ export default function Methodology() {
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#4f46e5]">Col 5: tree_depth</span>
+                    <span className="font-mono text-ink-indigo">Col 5: tree_depth</span>
                     <span className="text-slate-600">depth(v) = depth(u) + 1</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#4f46e5]">Col 6: parent_out_degree</span>
+                    <span className="font-mono text-ink-indigo">Col 6: parent_out_degree</span>
                     <span className="text-slate-600">indptr[u+1] − indptr[u] on G_t−</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#4f46e5]">Col 11: descendant_count</span>
+                    <span className="font-mono text-ink-indigo">Col 11: descendant_count</span>
                     <span className="text-slate-600">Σ 1 (Subtree ancestor walk)</span>
                   </li>
                 </ul>
@@ -356,19 +356,19 @@ export default function Methodology() {
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#059669]">Col 14: dt_edge</span>
+                    <span className="font-mono text-ink-emerald">Col 14: dt_edge</span>
                     <span className="text-slate-600">t_i − t_{"{i-1}"} (instantaneous velocity)</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#059669]">Col 12: dt_motif</span>
+                    <span className="font-mono text-ink-emerald">Col 12: dt_motif</span>
                     <span className="text-slate-600">t_i − min(t_participating edges)</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#059669]">Col 8: t_from_root</span>
+                    <span className="font-mono text-ink-emerald">Col 8: t_from_root</span>
                     <span className="text-slate-600">max(0, t_i − t_publish)</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#059669]">Col 13: cumulative_prior</span>
+                    <span className="font-mono text-ink-emerald">Col 13: cumulative_prior</span>
                     <span className="text-slate-600">Total retweets prior to window</span>
                   </li>
                 </ul>
@@ -382,15 +382,15 @@ export default function Methodology() {
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#9333ea]">Col 7: node_count</span>
+                    <span className="font-mono text-ink-purple">Col 7: node_count</span>
                     <span className="text-slate-600">|V_{"{t−}"}| (unique active users in graph)</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#9333ea]">Col 10: t_idle</span>
+                    <span className="font-mono text-ink-purple">Col 10: t_idle</span>
                     <span className="text-slate-600">t_i − max(t_history(u))</span>
                   </li>
                   <li className="flex justify-between items-center text-slate-700">
-                    <span className="font-mono text-[#9333ea]">Col 9: i_reactivate</span>
+                    <span className="font-mono text-ink-purple">Col 9: i_reactivate</span>
                     <span className="text-slate-600">1[T_idle &gt; 300 s] (dormant reactivation)</span>
                   </li>
                 </ul>
@@ -410,7 +410,7 @@ export default function Methodology() {
                 Sequence Architecture Pipeline
               </h3>
               <p className="text-slate-700 text-sm sm:text-base leading-relaxed mt-2">
-                Given an observed continuous sequence <code className="font-mono text-[#0284c7] px-1.5 py-0.5 rounded bg-slate-50">X &isin; &reals;<sup>K &times; 15</sup></code>, the deep sequence learner executes across three stages:
+                Given an observed continuous sequence <code className="font-mono text-ink-sky px-1.5 py-0.5 rounded bg-slate-50">X &isin; &reals;<sup>K &times; 15</sup></code>, the deep sequence learner executes across three stages:
               </p>
             </div>
 
@@ -426,7 +426,7 @@ export default function Methodology() {
                 <p className="text-slate-600 text-xs sm:text-sm mb-3">
                   Processes continuous forward-backward context per edge representation:
                 </p>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-[#4f46e5]">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-ink-indigo">
                   H = BiGRU(X), &nbsp;&nbsp; H &isin; &reals;<sup>K &times; 2D</sup>, &nbsp;&nbsp; D = 64
                 </div>
               </div>
@@ -442,7 +442,7 @@ export default function Methodology() {
                 <p className="text-slate-600 text-xs sm:text-sm mb-3">
                   Assigns importance weights <em className="text-slate-900">α<sub>j</sub></em> across variable-length history. Padded tokens receive <code className="font-mono text-slate-800 bg-slate-50 px-1 py-0.5 rounded">s<sub>j</sub> = −10⁹</code> before softmax, strictly zeroing out sequence padding masks:
                 </p>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-[#0284c7] overflow-x-auto space-y-1">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-ink-sky overflow-x-auto space-y-1">
                   <div>s<sub>j</sub> = w<sub>2</sub><sup>T</sup> tanh(W<sub>1</sub> h<sub>j</sub> + b<sub>1</sub>) + b<sub>2</sub></div>
                   <div>&alpha;<sub>j</sub> = exp(s<sub>j</sub>) / &sum;<sub>k</sub> exp(s<sub>k</sub>), &nbsp;&nbsp; c = &sum;<sub>j=1</sub><sup>K</sup> &alpha;<sub>j</sub> h<sub>j</sub></div>
                 </div>
@@ -459,7 +459,7 @@ export default function Methodology() {
                 <p className="text-slate-600 text-xs sm:text-sm mb-3">
                   Maps pooled cascade context vector <em className="text-slate-900">c</em> to log-space popularity increment:
                 </p>
-                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-[#059669] overflow-x-auto space-y-1">
+                <div className="bg-slate-50 border border-slate-200/70 rounded-lg p-3 font-mono text-sm text-ink-emerald overflow-x-auto space-y-1">
                   <div>y&#770; = MLP(c) = log<sub>2</sub>(&Delta;P&#770; + 1)</div>
                   <div>&#8466;<sub>MSLE</sub> = (1 / B) &sum;<sub>i=1</sub><sup>B</sup> (y<sub>i</sub> &minus; y&#770;<sub>i</sub>)<sup>2</sup></div>
                 </div>

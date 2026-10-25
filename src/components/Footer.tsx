@@ -57,7 +57,7 @@ export default function Footer() {
                   href="https://github.com/aswath-siddharth/Forecasting-Motif-Evolution-in-Social-Networks-using-Temporal-Graph-Networks"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0284c7] hover:underline flex items-center gap-1"
+                  className="text-ink-sky hover:underline flex items-center gap-1"
                 >
                   <span>GitHub Repository</span>
                   <span>↗</span>

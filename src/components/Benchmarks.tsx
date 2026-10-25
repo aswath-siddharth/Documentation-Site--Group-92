@@ -99,7 +99,7 @@ export default function Benchmarks() {
                   <tbody className="divide-y divide-slate-200 bg-slate-50">
                     <tr className="bg-gradient-to-r from-[#6366f1]/15 to-transparent border-l-4 border-l-[#38bdf8]">
                       <td className="py-3.5 px-4 font-bold text-slate-900">MSLE &darr; (log₂)</td>
-                      <td className="py-3.5 px-4 text-[#0284c7] font-bold font-mono">1.9845 &plusmn; 0.0187</td>
+                      <td className="py-3.5 px-4 text-ink-sky font-bold font-mono">1.9845 &plusmn; 0.0187</td>
                       <td className="py-3.5 px-4 text-slate-700 font-mono">1.9864 &plusmn; 0.0258</td>
                       <td className="py-3.5 px-4 text-slate-600 font-mono">2.4410</td>
                       <td className="py-3.5 px-4">
@@ -124,7 +124,7 @@ export default function Benchmarks() {
                     </tr>
                     <tr className="hover:bg-slate-50/70">
                       <td className="py-3.5 px-4 font-semibold text-slate-900">Parameters</td>
-                      <td className="py-3.5 px-4 text-[#059669] font-bold font-mono">49,824 (50k)</td>
+                      <td className="py-3.5 px-4 text-ink-emerald font-bold font-mono">49,824 (50k)</td>
                       <td className="py-3.5 px-4 text-slate-700 font-mono">153,970 (154k)</td>
                       <td className="py-3.5 px-4 text-slate-600 font-mono">&asymp; 2,200*</td>
                       <td className="py-3.5 px-4">
@@ -134,8 +134,8 @@ export default function Benchmarks() {
                       </td>
                     </tr>
                     <tr className="bg-[#10b981]/10 font-medium border-l-4 border-l-[#10b981]">
-                      <td className="py-3.5 px-4 font-bold text-[#059669]">3-Model Ensemble</td>
-                      <td className="py-3.5 px-4 font-bold text-[#059669] font-mono">1.9516 (149k params)</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-emerald">3-Model Ensemble</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-emerald font-mono">1.9516 (149k params)</td>
                       <td className="py-3.5 px-4 text-slate-700 font-mono">1.9730 (462k params)</td>
                       <td className="py-3.5 px-4 text-slate-600 font-mono">—</td>
                       <td className="py-3.5 px-4">
@@ -157,7 +157,7 @@ export default function Benchmarks() {
                   <div>
                     <div className="flex justify-between text-slate-700 mb-1.5">
                       <span className="font-semibold text-slate-900">CasMotif Single Model</span>
-                      <span className="text-[#059669] font-bold font-mono">49,824 parameters (3.1× lighter)</span>
+                      <span className="text-ink-emerald font-bold font-mono">49,824 parameters (3.1× lighter)</span>
                     </div>
                     <div className="w-full h-3.5 bg-slate-50 rounded-full overflow-hidden p-0.5 border border-slate-200">
                       <div className="h-full bg-gradient-to-r from-[#10b981] to-[#06b6d4] rounded-full w-[32.3%]" />
@@ -167,7 +167,7 @@ export default function Benchmarks() {
                   <div>
                     <div className="flex justify-between text-slate-700 mb-1.5">
                       <span className="font-semibold text-slate-700">CasSubTS (Knowledge-Based Systems 2025)</span>
-                      <span className="text-[#4f46e5] font-mono">153,970 parameters</span>
+                      <span className="text-ink-indigo font-mono">153,970 parameters</span>
                     </div>
                     <div className="w-full h-3.5 bg-slate-50 rounded-full overflow-hidden p-0.5 border border-slate-200">
                       <div className="h-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-full w-full" />
@@ -177,7 +177,7 @@ export default function Benchmarks() {
                   <div>
                     <div className="flex justify-between text-slate-700 mb-1.5">
                       <span className="font-semibold text-slate-900">CasMotif 3-Model Parameter-Matched Ensemble</span>
-                      <span className="text-[#0284c7] font-bold font-mono">149,472 parameters (below one CasSubTS!)</span>
+                      <span className="text-ink-sky font-bold font-mono">149,472 parameters (below one CasSubTS!)</span>
                     </div>
                     <div className="w-full h-3.5 bg-slate-50 rounded-full overflow-hidden p-0.5 border border-slate-200">
                       <div className="h-full bg-gradient-to-r from-[#0ea5e9] to-[#38bdf8] rounded-full w-[97%]" />
@@ -234,13 +234,13 @@ export default function Benchmarks() {
                   </thead>
                   <tbody className="divide-y divide-slate-200 bg-slate-50">
                     <tr className="bg-gradient-to-r from-[#6366f1]/15 to-transparent border-l-4 border-l-[#38bdf8]">
-                      <td className="py-3.5 px-4 font-bold text-[#0284c7]">1</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-sky">1</td>
                       <td className="py-3.5 px-4 font-bold text-slate-900">Attentive Pooling (Ours)</td>
                       <td className="py-3.5 px-4 font-mono text-slate-700">49,824</td>
-                      <td className="py-3.5 px-4 font-bold text-[#0284c7] font-mono">1.9804</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-sky font-mono">1.9804</td>
                       <td className="py-3.5 px-4 text-slate-700 font-mono">77.78</td>
-                      <td className="py-3.5 px-4 font-bold text-[#059669] font-mono">0.7933</td>
-                      <td className="py-3.5 px-4 text-xs text-[#059669] font-semibold">
+                      <td className="py-3.5 px-4 font-bold text-ink-emerald font-mono">0.7933</td>
+                      <td className="py-3.5 px-4 text-xs text-ink-emerald font-semibold">
                         +5.2% over mean, +12.6% over max
                       </td>
                     </tr>
@@ -303,11 +303,11 @@ export default function Benchmarks() {
                   </thead>
                   <tbody className="divide-y divide-slate-200 bg-slate-50">
                     <tr className="bg-gradient-to-r from-[#6366f1]/15 to-transparent border-l-4 border-l-[#38bdf8]">
-                      <td className="py-3.5 px-4 font-bold text-[#0284c7]">1</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-sky">1</td>
                       <td className="py-3.5 px-4 font-bold text-slate-900">Attentive BiGRU (Ours)</td>
-                      <td className="py-3.5 px-4 font-bold text-[#0284c7] font-mono">2.4423</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-sky font-mono">2.4423</td>
                       <td className="py-3.5 px-4 text-slate-700 font-mono">1275.2</td>
-                      <td className="py-3.5 px-4 font-bold text-[#059669] font-mono">0.5757</td>
+                      <td className="py-3.5 px-4 font-bold text-ink-emerald font-mono">0.5757</td>
                       <td className="py-3.5 px-4">
                         <span className="inline-block px-2.5 py-0.5 rounded text-xs font-semibold badge-emerald">
                           Strong R²=0.58 with only 15m signal
@@ -395,8 +395,8 @@ export default function Benchmarks() {
         </div>
 
         {/* The Log-Base Trap Explainer Card */}
-        <div className="glass-panel p-6 sm:p-8 border border-[#f59e0b]/30 bg-gradient-to-br from-[#f59e0b]/10 via-white to-transparent">
-          <div className="flex items-center gap-2.5 text-[#d97706] font-bold text-base mb-2">
+        <div className="glass-panel p-6 sm:p-8 border border-[#f59e0b]/30 bg-gradient-to-br from-[#f59e0b]/10 via-[var(--bg-elevated)] to-transparent">
+          <div className="flex items-center gap-2.5 text-ink-amber font-bold text-base mb-2">
             <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
               <line x1="12" y1="9" x2="12" y2="13" />
@@ -405,7 +405,7 @@ export default function Benchmarks() {
             <span>Beware the Literature&apos;s &quot;Log-Base Trap&quot; in MSLE Comparisons</span>
           </div>
           <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-4">
-            Published papers report MSLE in different log bases without always stating it. DeepHawkes evaluates in <strong className="text-slate-900">log base 2</strong> (<code>log2(y+1)</code>), while HierCas evaluates in <strong className="text-slate-900">natural log (ln)</strong>. Because <code className="text-[#d97706] font-mono bg-slate-50 px-1.5 py-0.5 rounded">MSLE_ln = MSLE_log2 &times; ln(2)² &asymp; 0.4805 &times; MSLE_log2</code>, quoting a log2 score against a natural-log baseline roughly <em>halves or doubles</em> the apparent score! CasMotif explicitly reports both units to ensure scientific fidelity.
+            Published papers report MSLE in different log bases without always stating it. DeepHawkes evaluates in <strong className="text-slate-900">log base 2</strong> (<code>log2(y+1)</code>), while HierCas evaluates in <strong className="text-slate-900">natural log (ln)</strong>. Because <code className="text-ink-amber font-mono bg-slate-50 px-1.5 py-0.5 rounded">MSLE_ln = MSLE_log2 &times; ln(2)² &asymp; 0.4805 &times; MSLE_log2</code>, quoting a log2 score against a natural-log baseline roughly <em>halves or doubles</em> the apparent score! CasMotif explicitly reports both units to ensure scientific fidelity.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200 text-xs">

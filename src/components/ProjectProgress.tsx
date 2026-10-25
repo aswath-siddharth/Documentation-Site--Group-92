@@ -47,7 +47,7 @@ export default function ProjectProgress() {
             </div>
             <div className="flex items-baseline gap-1 bg-gradient-to-r from-[#6366f1]/20 to-[#06b6d4]/20 border border-[#6366f1]/30 px-5 py-2.5 rounded-2xl shadow-lg">
               <span className="font-display font-black text-4xl sm:text-5xl gradient-text-primary">85</span>
-              <span className="text-xl font-bold text-[#0284c7]">%</span>
+              <span className="text-xl font-bold text-ink-sky">%</span>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default function ProjectProgress() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs sm:text-sm">
             <div className="glass-card p-5 border-t-2 border-t-[#38bdf8]">
-              <div className="text-xs font-mono font-bold text-[#0284c7] mb-2 uppercase">Milestone 01</div>
+              <div className="text-xs font-mono font-bold text-ink-sky mb-2 uppercase">Milestone 01</div>
               <strong className="text-slate-900 text-sm block mb-1.5">Intermediate Baselines</strong>
               <p className="text-slate-600 leading-relaxed text-xs">
                 Benchmark intermediate models between DeepHawkes (&apos;17) and CasSubTS (&apos;25), specifically CasCN and CasSeqGCN on the unified 42,186 chronological split.
@@ -95,7 +95,7 @@ export default function ProjectProgress() {
             </div>
 
             <div className="glass-card p-5 border-t-2 border-t-[#818cf8]">
-              <div className="text-xs font-mono font-bold text-[#4f46e5] mb-2 uppercase">Milestone 02</div>
+              <div className="text-xs font-mono font-bold text-ink-indigo mb-2 uppercase">Milestone 02</div>
               <strong className="text-slate-900 text-sm block mb-1.5">Multi-Horizon Expansion</strong>
               <p className="text-slate-600 leading-relaxed text-xs">
                 Expand observation horizons beyond 15m and 1h to include 2h and 3h observation windows, matching the complete CasSubTS evaluation protocol.
@@ -103,7 +103,7 @@ export default function ProjectProgress() {
             </div>
 
             <div className="glass-card p-5 border-t-2 border-t-[#34d399]">
-              <div className="text-xs font-mono font-bold text-[#059669] mb-2 uppercase">Milestone 03</div>
+              <div className="text-xs font-mono font-bold text-ink-emerald mb-2 uppercase">Milestone 03</div>
               <strong className="text-slate-900 text-sm block mb-1.5">Cross-Domain Generalization</strong>
               <p className="text-slate-600 leading-relaxed text-xs">
                 Validate whether conversation-tree motif formulations transfer effectively across platforms onto a second network dataset (Twitter or DBLP citations).

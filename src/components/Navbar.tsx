@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,7 +55,7 @@ export default function Navbar() {
         <a href="#hero" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#6366f1] via-[#06b6d4] to-[#a855f7] p-[1.5px] shadow-lg shadow-[#6366f1]/25 group-hover:shadow-[#6366f1]/40 transition-all duration-300 group-hover:scale-105">
             <div className="w-full h-full bg-slate-50 rounded-[10px] flex items-center justify-center">
-              <svg className="w-5 h-5 text-[#0284c7] group-hover:text-slate-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+              <svg className="w-5 h-5 text-ink-sky group-hover:text-slate-900 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
             </div>
@@ -63,7 +64,7 @@ export default function Navbar() {
             <div className="font-display font-extrabold text-xl tracking-tight text-slate-900 flex items-center gap-1.5">
               <span>Cas</span>
               <span className="gradient-text-primary">Motif</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#6366f1]/20 text-[#4f46e5] border border-[#6366f1]/30 ml-1 hidden sm:inline-block">
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#6366f1]/20 text-ink-indigo border border-[#6366f1]/30 ml-1 hidden sm:inline-block">
                 v2.0
               </span>
             </div>
@@ -82,7 +83,7 @@ export default function Navbar() {
                   isActive
                     ? 'bg-slate-100 text-slate-900 shadow-inner shadow-slate-200/60'
                     : link.highlight
-                    ? 'text-[#0284c7] hover:text-slate-900 hover:bg-[#38bdf8]/10'
+                    ? 'text-ink-sky hover:text-slate-900 hover:bg-[#38bdf8]/10'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
@@ -114,6 +115,8 @@ export default function Navbar() {
             </svg>
             <span className="hidden md:inline">GitHub</span>
           </a>
+
+          <ThemeToggle />
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

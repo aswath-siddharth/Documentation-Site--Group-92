@@ -172,7 +172,7 @@ export default function InteractiveSimulator() {
     ctx.clearRect(0, 0, rect.width, rect.height);
 
     // Draw Subtle Grid
-    ctx.strokeStyle = 'rgba(15, 23, 42, 0.06)';
+    ctx.strokeStyle = 'rgba(100, 116, 139, 0.12)';
     ctx.lineWidth = 1;
     const gridSize = 32;
     for (let x = 0; x < rect.width; x += gridSize) {
@@ -242,7 +242,7 @@ export default function InteractiveSimulator() {
       ctx.stroke();
 
       // Label
-      ctx.font = 'bold 10px JetBrains Mono, Inter, sans-serif';
+      ctx.font = 'bold 10px "IBM Plex Mono", "Plus Jakarta Sans", sans-serif';
       ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -536,10 +536,10 @@ export default function InteractiveSimulator() {
   const vectorMax = [1, 1, 1, 1, 1, 6, 8, 15, 900, 1, 600, 10, 300, 15, 300];
 
   const getViralityBadge = (val: number) => {
-    if (val > 4000) return { label: "Viral Explosion 🔥", color: "bg-[#f43f5e]/20 text-[#e11d48] border-[#f43f5e]/40" };
-    if (val > 800) return { label: "High Momentum ⚡", color: "bg-[#f59e0b]/20 text-[#d97706] border-[#f59e0b]/40" };
-    if (val > 100) return { label: "Steady Diffusion 📈", color: "bg-[#10b981]/20 text-[#059669] border-[#10b981]/40" };
-    return { label: "Early Stage 💬", color: "bg-[#38bdf8]/20 text-[#0284c7] border-[#38bdf8]/40" };
+    if (val > 4000) return { label: "Viral Explosion 🔥", color: "bg-[#f43f5e]/20 text-ink-rose border-[#f43f5e]/40" };
+    if (val > 800) return { label: "High Momentum ⚡", color: "bg-[#f59e0b]/20 text-ink-amber border-[#f59e0b]/40" };
+    if (val > 100) return { label: "Steady Diffusion 📈", color: "bg-[#10b981]/20 text-ink-emerald border-[#10b981]/40" };
+    return { label: "Early Stage 💬", color: "bg-[#38bdf8]/20 text-ink-sky border-[#38bdf8]/40" };
   };
 
   const viralityBadge = getViralityBadge(predictedInc);
@@ -633,15 +633,15 @@ export default function InteractiveSimulator() {
             {/* Left: Canvas Graph Panel */}
             <div className="lg:col-span-7 bg-slate-50 relative border-b lg:border-b-0 lg:border-r border-slate-200 min-h-[380px] flex flex-col justify-between">
               <div className="absolute top-3 left-3 bg-slate-50/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-mono flex items-center gap-4 text-slate-700 z-10 shadow-lg">
-                <div>Events: <strong className="text-[#0284c7]">{eventIndex} / {currentPreset.events.length}</strong></div>
-                <div>Time: <strong className="text-[#4f46e5]">{eventIndex > 0 ? `${currentPreset.events[eventIndex - 1].t}s` : '0s'}</strong></div>
-                <div>Active Users: <strong className="text-[#059669]">{csrState.nodeCount}</strong></div>
+                <div>Events: <strong className="text-ink-sky">{eventIndex} / {currentPreset.events.length}</strong></div>
+                <div>Time: <strong className="text-ink-indigo">{eventIndex > 0 ? `${currentPreset.events[eventIndex - 1].t}s` : '0s'}</strong></div>
+                <div>Active Users: <strong className="text-ink-emerald">{csrState.nodeCount}</strong></div>
               </div>
 
               {eventIndex > 0 && (
                 <div className="absolute bottom-3 left-3 right-3 bg-slate-50/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-700 z-10 flex items-center justify-between">
                   <div className="truncate">
-                    <span className="text-[#0284c7] font-bold mr-2">Latest Event:</span>
+                    <span className="text-ink-sky font-bold mr-2">Latest Event:</span>
                     <span className="font-mono text-slate-900">{currentPreset.events[eventIndex - 1].u} &rarr; {currentPreset.events[eventIndex - 1].v}</span>
                     <span className="text-slate-600 ml-2">({currentPreset.events[eventIndex - 1].text})</span>
                   </div>
@@ -660,7 +660,7 @@ export default function InteractiveSimulator() {
                     <span className="w-2 h-2 rounded-full bg-[#10b981]" />
                     Causal Motif on G<sub>t−</sub>
                   </span>
-                  <span className="text-[#059669] text-[10px] font-mono px-2 py-0.5 rounded bg-[#10b981]/15">Zero Leakage</span>
+                  <span className="text-ink-emerald text-[10px] font-mono px-2 py-0.5 rounded bg-[#10b981]/15">Zero Leakage</span>
                 </div>
                 <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="text-sm font-bold flex items-center gap-2" style={{ color: activeMotif.color }}>
@@ -677,13 +677,13 @@ export default function InteractiveSimulator() {
               <div className="glass-card p-4 border border-slate-200">
                 <div className="flex items-center justify-between text-xs text-slate-600 font-semibold uppercase tracking-wider mb-2">
                   <span>Contiguous CSR Memory Layout</span>
-                  <span className="text-[#4f46e5] text-[10px] font-mono px-2 py-0.5 rounded bg-[#818cf8]/15">O(1) Array Slices</span>
+                  <span className="text-ink-indigo text-[10px] font-mono px-2 py-0.5 rounded bg-[#818cf8]/15">O(1) Array Slices</span>
                 </div>
 
                 <div className="space-y-3 font-mono text-xs">
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                      <span className="font-bold text-[#0284c7]">indptr [|V|+1]</span>
+                      <span className="font-bold text-ink-sky">indptr [|V|+1]</span>
                       <span className="text-slate-500">offsets</span>
                     </div>
                     <div className="flex flex-wrap gap-1 bg-slate-50 p-2 rounded-lg border border-slate-200/70">
@@ -708,7 +708,7 @@ export default function InteractiveSimulator() {
 
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-600 mb-1">
-                      <span className="font-bold text-[#0891b2]">indices [|E|]</span>
+                      <span className="font-bold text-ink-cyan">indices [|E|]</span>
                       <span className="text-slate-500">out-neighbors</span>
                     </div>
                     <div className="flex flex-wrap gap-1 bg-slate-50 p-2 rounded-lg border border-slate-200/70 min-h-[34px]">
@@ -741,7 +741,7 @@ export default function InteractiveSimulator() {
               <div className="glass-card p-4 border border-slate-200">
                 <div className="flex items-center justify-between text-xs text-slate-600 font-semibold uppercase tracking-wider mb-2">
                   <span>15-D Causal Event Vector</span>
-                  <span className="text-[#9333ea] text-[10px] font-mono px-2 py-0.5 rounded bg-[#c084fc]/15">BiGRU Input</span>
+                  <span className="text-ink-purple text-[10px] font-mono px-2 py-0.5 rounded bg-[#c084fc]/15">BiGRU Input</span>
                 </div>
                 <div className="grid grid-cols-5 gap-1.5">
                   {featureVector.map((val, idx) => {
@@ -767,7 +767,7 @@ export default function InteractiveSimulator() {
               </div>
 
               {/* Attentive Sequence Prediction */}
-              <div className="glass-card p-4 border border-[#10b981]/30 bg-gradient-to-br from-[#10b981]/10 via-white to-transparent">
+              <div className="glass-card p-4 border border-[#10b981]/30 bg-gradient-to-br from-[#10b981]/10 via-[var(--bg-elevated)] to-transparent">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-xs text-slate-700 font-semibold">Predicted 24h Popularity:</div>
                   <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${viralityBadge.color}`}>
@@ -776,14 +776,14 @@ export default function InteractiveSimulator() {
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <div className="font-display font-black text-2xl sm:text-3xl text-[#059669] tracking-tight">
+                    <div className="font-display font-black text-2xl sm:text-3xl text-ink-emerald tracking-tight">
                       +{predictedInc.toLocaleString()}
                     </div>
                     <div className="text-[11px] text-slate-600">retweets in 24 hours</div>
                   </div>
                   <div className="text-right font-mono text-xs">
-                    <div className="text-[#d97706] font-semibold">&alpha;<sub>j</sub> = {attentionAlpha.toFixed(4)}</div>
-                    <div className="text-base text-[#0284c7] font-bold">y&#770; = {predLog2}</div>
+                    <div className="text-ink-amber font-semibold">&alpha;<sub>j</sub> = {attentionAlpha.toFixed(4)}</div>
+                    <div className="text-base text-ink-sky font-bold">y&#770; = {predLog2}</div>
                   </div>
                 </div>
               </div>
