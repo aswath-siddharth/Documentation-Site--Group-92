@@ -100,26 +100,32 @@ python -m pipeline_w.multiseed`;
         </div>
 
         {/* Quickstart Code Block */}
-        <div className="glass-panel overflow-hidden mb-12 border border-slate-200">
+        <div className="overflow-hidden mb-12 rounded-2xl border border-[#27272a] bg-[#0c0c0c] shadow-2xl shadow-black/30">
           {/* Terminal Window Header */}
-          <div className="bg-slate-50 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+          <div className="bg-[#1a1a1a] px-4 py-3 border-b border-[#27272a] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-              <span className="text-xs font-mono text-slate-600 ml-2">bash — casmotif-pipeline</span>
+              <span className="w-3 h-3 rounded-full bg-[#ff5f57] inline-block" />
+              <span className="w-3 h-3 rounded-full bg-[#febc2e] inline-block" />
+              <span className="w-3 h-3 rounded-full bg-[#28c840] inline-block" />
+              <span className="text-xs font-mono text-[#a1a1aa] ml-2">bash — casmotif-pipeline</span>
             </div>
 
             <button
               onClick={copyCode}
-              className="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5 transition-all active:scale-95"
+              className="px-3 py-1 rounded-lg text-xs font-semibold bg-[#27272a] border border-[#3f3f46] text-[#d4d4d8] hover:text-white hover:bg-[#3f3f46] flex items-center gap-1.5 transition-all active:scale-95"
             >
               {copied ? '✓ Copied to Clipboard!' : '📋 Copy Script'}
             </button>
           </div>
 
-          <div className="bg-slate-50 p-5 sm:p-6 overflow-x-auto font-mono text-xs text-slate-800 leading-relaxed">
-            <pre><code>{codeString}</code></pre>
+          <div className="bg-[#0c0c0c] p-5 sm:p-6 overflow-x-auto font-mono text-xs text-[#e4e4e7] leading-relaxed">
+            <pre><code>
+              {codeString.split('\n').map((line, i) => (
+                <span key={i} className={line.trimStart().startsWith('#') ? 'text-[#6a9955]' : undefined}>
+                  {line}{'\n'}
+                </span>
+              ))}
+            </code></pre>
           </div>
         </div>
 
