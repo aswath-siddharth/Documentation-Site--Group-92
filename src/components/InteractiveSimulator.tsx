@@ -118,7 +118,7 @@ export default function InteractiveSimulator() {
     name: "Ready for stream ingestion",
     code: "none",
     desc: "Press Play or Step to trace dynamic CSR arrays and causal motifs in real time.",
-    color: "#94a3b8"
+    color: "#64748b"
   });
 
   const [predictedInc, setPredictedInc] = useState<number>(0);
@@ -172,7 +172,7 @@ export default function InteractiveSimulator() {
     ctx.clearRect(0, 0, rect.width, rect.height);
 
     // Draw Subtle Grid
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+    ctx.strokeStyle = 'rgba(15, 23, 42, 0.06)';
     ctx.lineWidth = 1;
     const gridSize = 32;
     for (let x = 0; x < rect.width; x += gridSize) {
@@ -265,7 +265,7 @@ export default function InteractiveSimulator() {
       name: "Ready for stream ingestion",
       code: "none",
       desc: "Press Play or Step to trace dynamic CSR arrays and causal motifs in real time.",
-      color: "#94a3b8"
+      color: "#64748b"
     });
 
     nodesRef.current = {};
@@ -362,7 +362,7 @@ export default function InteractiveSimulator() {
     let name = "Single Direct Reply (Col 0)";
     let code = "single";
     let desc = "Default 1-to-1 linear reply. Out-degree 0, depth < 3.";
-    let color = "#94a3b8";
+    let color = "#64748b";
 
     if (isCycle) {
       name = "Reciprocal 3-Cycle (Col 4)";
@@ -536,16 +536,16 @@ export default function InteractiveSimulator() {
   const vectorMax = [1, 1, 1, 1, 1, 6, 8, 15, 900, 1, 600, 10, 300, 15, 300];
 
   const getViralityBadge = (val: number) => {
-    if (val > 4000) return { label: "Viral Explosion 🔥", color: "bg-[#f43f5e]/20 text-[#fb7185] border-[#f43f5e]/40" };
-    if (val > 800) return { label: "High Momentum ⚡", color: "bg-[#f59e0b]/20 text-[#fbbf24] border-[#f59e0b]/40" };
-    if (val > 100) return { label: "Steady Diffusion 📈", color: "bg-[#10b981]/20 text-[#34d399] border-[#10b981]/40" };
-    return { label: "Early Stage 💬", color: "bg-[#38bdf8]/20 text-[#38bdf8] border-[#38bdf8]/40" };
+    if (val > 4000) return { label: "Viral Explosion 🔥", color: "bg-[#f43f5e]/20 text-[#e11d48] border-[#f43f5e]/40" };
+    if (val > 800) return { label: "High Momentum ⚡", color: "bg-[#f59e0b]/20 text-[#d97706] border-[#f59e0b]/40" };
+    if (val > 100) return { label: "Steady Diffusion 📈", color: "bg-[#10b981]/20 text-[#059669] border-[#10b981]/40" };
+    return { label: "Early Stage 💬", color: "bg-[#38bdf8]/20 text-[#0284c7] border-[#38bdf8]/40" };
   };
 
   const viralityBadge = getViralityBadge(predictedInc);
 
   return (
-    <section id="simulator" className="py-24 relative border-t border-white/5">
+    <section id="simulator" className="py-24 relative border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -553,10 +553,10 @@ export default function InteractiveSimulator() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] pulse-indicator" />
             04 • Interactive Simulation
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight mb-4">
             Live Diffusion &amp; Causal Motif Simulator
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-700 text-base sm:text-lg">
             Step through continuous-time diffusion events, inspect contiguous CSR memory array slicing in real-time, and watch attentive pooling forecast 24-hour virality.
           </p>
         </div>
@@ -564,16 +564,16 @@ export default function InteractiveSimulator() {
         {/* Simulator Wrapper */}
         <div className="glass-panel overflow-hidden border border-[#6366f1]/30">
           {/* Controls Bar */}
-          <div className="p-4 sm:p-5 bg-[#060912]/80 border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <div className="p-4 sm:p-5 bg-slate-50/80 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <label htmlFor="sim-preset-dropdown" className="text-xs font-semibold text-slate-300">Preset Scenario:</label>
+              <label htmlFor="sim-preset-dropdown" className="text-xs font-semibold text-slate-700">Preset Scenario:</label>
               <select
                 id="sim-preset-dropdown"
                 value={presetKey}
                 onChange={(e) => {
                   setPresetKey(e.target.value);
                 }}
-                className="bg-[#090d16] border border-white/15 text-white text-xs rounded-lg px-3 py-2 focus:border-[#6366f1] outline-none font-medium cursor-pointer"
+                className="bg-slate-50 border border-slate-200 text-slate-900 text-xs rounded-lg px-3 py-2 focus:border-[#6366f1] outline-none font-medium cursor-pointer"
               >
                 <option value="viral_star">Viral News Burst (Star Fork Hubs)</option>
                 <option value="deep_chain">Deep Conversational Debate (Directed Chains)</option>
@@ -604,14 +604,14 @@ export default function InteractiveSimulator() {
                   setIsPlaying(false);
                   step();
                 }}
-                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 border border-white/12 text-slate-200 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-800 hover:bg-slate-100 hover:text-slate-900 transition-all active:scale-95"
               >
                 Step Event ⏭
               </button>
 
               <button
                 onClick={resetGraph}
-                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 border border-white/12 text-slate-300 hover:bg-white/10 hover:text-white transition-all"
+                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-all"
               >
                 Reset
               </button>
@@ -619,7 +619,7 @@ export default function InteractiveSimulator() {
               <select
                 value={playSpeed}
                 onChange={(e) => setPlaySpeed(Number(e.target.value))}
-                className="bg-[#090d16] border border-white/15 text-slate-300 text-xs rounded-lg px-2.5 py-2 outline-none font-mono"
+                className="bg-slate-50 border border-slate-200 text-slate-700 text-xs rounded-lg px-2.5 py-2 outline-none font-mono"
               >
                 <option value={1500}>0.7x</option>
                 <option value={1000}>1.0x</option>
@@ -631,19 +631,19 @@ export default function InteractiveSimulator() {
           {/* Simulator Body */}
           <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[480px]">
             {/* Left: Canvas Graph Panel */}
-            <div className="lg:col-span-7 bg-[#05070d] relative border-b lg:border-b-0 lg:border-r border-white/10 min-h-[380px] flex flex-col justify-between">
-              <div className="absolute top-3 left-3 bg-[#0d121f]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs font-mono flex items-center gap-4 text-slate-300 z-10 shadow-lg">
-                <div>Events: <strong className="text-[#38bdf8]">{eventIndex} / {currentPreset.events.length}</strong></div>
-                <div>Time: <strong className="text-[#818cf8]">{eventIndex > 0 ? `${currentPreset.events[eventIndex - 1].t}s` : '0s'}</strong></div>
-                <div>Active Users: <strong className="text-[#34d399]">{csrState.nodeCount}</strong></div>
+            <div className="lg:col-span-7 bg-slate-50 relative border-b lg:border-b-0 lg:border-r border-slate-200 min-h-[380px] flex flex-col justify-between">
+              <div className="absolute top-3 left-3 bg-slate-50/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-mono flex items-center gap-4 text-slate-700 z-10 shadow-lg">
+                <div>Events: <strong className="text-[#0284c7]">{eventIndex} / {currentPreset.events.length}</strong></div>
+                <div>Time: <strong className="text-[#4f46e5]">{eventIndex > 0 ? `${currentPreset.events[eventIndex - 1].t}s` : '0s'}</strong></div>
+                <div>Active Users: <strong className="text-[#059669]">{csrState.nodeCount}</strong></div>
               </div>
 
               {eventIndex > 0 && (
-                <div className="absolute bottom-3 left-3 right-3 bg-[#0d121f]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs text-slate-300 z-10 flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 bg-slate-50/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-200 text-xs text-slate-700 z-10 flex items-center justify-between">
                   <div className="truncate">
-                    <span className="text-[#38bdf8] font-bold mr-2">Latest Event:</span>
-                    <span className="font-mono text-white">{currentPreset.events[eventIndex - 1].u} &rarr; {currentPreset.events[eventIndex - 1].v}</span>
-                    <span className="text-slate-400 ml-2">({currentPreset.events[eventIndex - 1].text})</span>
+                    <span className="text-[#0284c7] font-bold mr-2">Latest Event:</span>
+                    <span className="font-mono text-slate-900">{currentPreset.events[eventIndex - 1].u} &rarr; {currentPreset.events[eventIndex - 1].v}</span>
+                    <span className="text-slate-600 ml-2">({currentPreset.events[eventIndex - 1].text})</span>
                   </div>
                 </div>
               )}
@@ -652,41 +652,41 @@ export default function InteractiveSimulator() {
             </div>
 
             {/* Right: Real-time CSR & Causal Vector Inspector */}
-            <div className="lg:col-span-5 p-5 bg-[#0b0f19] flex flex-col gap-4 overflow-y-auto max-h-[580px]">
+            <div className="lg:col-span-5 p-5 bg-slate-50 flex flex-col gap-4 overflow-y-auto max-h-[580px]">
               {/* Active Motif Detection */}
-              <div className="glass-card p-4 border border-white/10">
-                <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
+              <div className="glass-card p-4 border border-slate-200">
+                <div className="flex items-center justify-between text-xs text-slate-600 font-semibold uppercase tracking-wider mb-2">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#10b981]" />
                     Causal Motif on G<sub>t−</sub>
                   </span>
-                  <span className="text-[#34d399] text-[10px] font-mono px-2 py-0.5 rounded bg-[#10b981]/15">Zero Leakage</span>
+                  <span className="text-[#059669] text-[10px] font-mono px-2 py-0.5 rounded bg-[#10b981]/15">Zero Leakage</span>
                 </div>
-                <div className="p-3 rounded-xl bg-black/40 border border-white/10">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="text-sm font-bold flex items-center gap-2" style={{ color: activeMotif.color }}>
                     <span className="w-2 h-2 rounded-full pulse-indicator" style={{ backgroundColor: activeMotif.color }} />
                     {activeMotif.name}
                   </div>
-                  <div className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <div className="text-xs text-slate-600 mt-1 leading-relaxed">
                     {activeMotif.desc}
                   </div>
                 </div>
               </div>
 
               {/* Dynamic CSR Memory Slices */}
-              <div className="glass-card p-4 border border-white/10">
-                <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
+              <div className="glass-card p-4 border border-slate-200">
+                <div className="flex items-center justify-between text-xs text-slate-600 font-semibold uppercase tracking-wider mb-2">
                   <span>Contiguous CSR Memory Layout</span>
-                  <span className="text-[#818cf8] text-[10px] font-mono px-2 py-0.5 rounded bg-[#818cf8]/15">O(1) Array Slices</span>
+                  <span className="text-[#4f46e5] text-[10px] font-mono px-2 py-0.5 rounded bg-[#818cf8]/15">O(1) Array Slices</span>
                 </div>
 
                 <div className="space-y-3 font-mono text-xs">
                   <div>
-                    <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                      <span className="font-bold text-[#38bdf8]">indptr [|V|+1]</span>
+                    <div className="flex justify-between text-[11px] text-slate-600 mb-1">
+                      <span className="font-bold text-[#0284c7]">indptr [|V|+1]</span>
                       <span className="text-slate-500">offsets</span>
                     </div>
-                    <div className="flex flex-wrap gap-1 bg-black/50 p-2 rounded-lg border border-white/5">
+                    <div className="flex flex-wrap gap-1 bg-slate-50 p-2 rounded-lg border border-slate-200/70">
                       {indptr.map((val, idx) => {
                         const isSlice = (idx === activeParentNid || idx === activeParentNid + 1);
                         return (
@@ -694,8 +694,8 @@ export default function InteractiveSimulator() {
                             key={idx}
                             className={`px-1.5 py-0.5 rounded text-[11px] border transition-colors ${
                               isSlice 
-                                ? 'bg-[#6366f1]/40 border-[#818cf8] text-white shadow-sm shadow-[#6366f1]' 
-                                : 'bg-white/5 border-white/5 text-slate-400'
+                                ? 'bg-[#6366f1]/40 border-[#818cf8] text-slate-900 shadow-sm shadow-[#6366f1]' 
+                                : 'bg-slate-50 border-slate-200/70 text-slate-600'
                             }`}
                           >
                             <span className="text-[8px] text-slate-500 block leading-tight">{idx}</span>
@@ -707,11 +707,11 @@ export default function InteractiveSimulator() {
                   </div>
 
                   <div>
-                    <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                      <span className="font-bold text-[#06b6d4]">indices [|E|]</span>
+                    <div className="flex justify-between text-[11px] text-slate-600 mb-1">
+                      <span className="font-bold text-[#0891b2]">indices [|E|]</span>
                       <span className="text-slate-500">out-neighbors</span>
                     </div>
-                    <div className="flex flex-wrap gap-1 bg-black/50 p-2 rounded-lg border border-white/5 min-h-[34px]">
+                    <div className="flex flex-wrap gap-1 bg-slate-50 p-2 rounded-lg border border-slate-200/70 min-h-[34px]">
                       {indices.length === 0 ? (
                         <span className="text-slate-500 text-[10px] py-1">[empty stream]</span>
                       ) : (
@@ -722,8 +722,8 @@ export default function InteractiveSimulator() {
                               key={idx}
                               className={`px-1.5 py-0.5 rounded text-[11px] border transition-colors ${
                                 inSlice 
-                                ? 'bg-[#06b6d4]/40 border-[#06b6d4] text-white shadow-sm' 
-                                : 'bg-white/5 border-white/5 text-slate-400'
+                                ? 'bg-[#06b6d4]/40 border-[#06b6d4] text-slate-900 shadow-sm' 
+                                : 'bg-slate-50 border-slate-200/70 text-slate-600'
                               }`}
                             >
                               <span className="text-[8px] text-slate-500 block leading-tight">{idx}</span>
@@ -738,10 +738,10 @@ export default function InteractiveSimulator() {
               </div>
 
               {/* 15-D Vector Bar Gauge */}
-              <div className="glass-card p-4 border border-white/10">
-                <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
+              <div className="glass-card p-4 border border-slate-200">
+                <div className="flex items-center justify-between text-xs text-slate-600 font-semibold uppercase tracking-wider mb-2">
                   <span>15-D Causal Event Vector</span>
-                  <span className="text-[#c084fc] text-[10px] font-mono px-2 py-0.5 rounded bg-[#c084fc]/15">BiGRU Input</span>
+                  <span className="text-[#9333ea] text-[10px] font-mono px-2 py-0.5 rounded bg-[#c084fc]/15">BiGRU Input</span>
                 </div>
                 <div className="grid grid-cols-5 gap-1.5">
                   {featureVector.map((val, idx) => {
@@ -750,10 +750,10 @@ export default function InteractiveSimulator() {
                     return (
                       <div
                         key={idx}
-                        className="bg-black/50 border border-white/5 rounded-lg h-10 relative flex flex-col justify-end overflow-hidden p-0.5"
+                        className="bg-slate-50 border border-slate-200/70 rounded-lg h-10 relative flex flex-col justify-end overflow-hidden p-0.5"
                         title={`${vectorLabels[idx]}: ${val}`}
                       >
-                        <span className="text-[8px] font-mono text-slate-400 text-center block w-full absolute top-0.5 left-0">
+                        <span className="text-[8px] font-mono text-slate-600 text-center block w-full absolute top-0.5 left-0">
                           {vectorLabels[idx]}
                         </span>
                         <div
@@ -767,23 +767,23 @@ export default function InteractiveSimulator() {
               </div>
 
               {/* Attentive Sequence Prediction */}
-              <div className="glass-card p-4 border border-[#10b981]/30 bg-gradient-to-br from-[#10b981]/10 via-[#0d121f] to-transparent">
+              <div className="glass-card p-4 border border-[#10b981]/30 bg-gradient-to-br from-[#10b981]/10 via-white to-transparent">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="text-xs text-slate-300 font-semibold">Predicted 24h Popularity:</div>
+                  <div className="text-xs text-slate-700 font-semibold">Predicted 24h Popularity:</div>
                   <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${viralityBadge.color}`}>
                     {viralityBadge.label}
                   </span>
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <div className="font-display font-black text-2xl sm:text-3xl text-[#34d399] tracking-tight">
+                    <div className="font-display font-black text-2xl sm:text-3xl text-[#059669] tracking-tight">
                       +{predictedInc.toLocaleString()}
                     </div>
-                    <div className="text-[11px] text-slate-400">retweets in 24 hours</div>
+                    <div className="text-[11px] text-slate-600">retweets in 24 hours</div>
                   </div>
                   <div className="text-right font-mono text-xs">
-                    <div className="text-[#fbbf24] font-semibold">&alpha;<sub>j</sub> = {attentionAlpha.toFixed(4)}</div>
-                    <div className="text-base text-[#38bdf8] font-bold">y&#770; = {predLog2}</div>
+                    <div className="text-[#d97706] font-semibold">&alpha;<sub>j</sub> = {attentionAlpha.toFixed(4)}</div>
+                    <div className="text-base text-[#0284c7] font-bold">y&#770; = {predLog2}</div>
                   </div>
                 </div>
               </div>

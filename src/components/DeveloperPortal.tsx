@@ -83,7 +83,7 @@ python -m pipeline_w.multiseed`;
   ];
 
   return (
-    <section id="docs" className="py-24 relative bg-[#070b14]/70 border-t border-white/5">
+    <section id="docs" className="py-24 relative bg-slate-50/70 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -91,34 +91,34 @@ python -m pipeline_w.multiseed`;
             <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4]" />
             09 • Documentation &amp; Citations
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight mb-4">
             Developer Portal &amp; Reproducibility Guide
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-700 text-base sm:text-lg">
             Quickstart terminal commands, dataset contracts, and academic literature references.
           </p>
         </div>
 
         {/* Quickstart Code Block */}
-        <div className="glass-panel overflow-hidden mb-12 border border-white/12">
+        <div className="glass-panel overflow-hidden mb-12 border border-slate-200">
           {/* Terminal Window Header */}
-          <div className="bg-[#0b0f19] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+          <div className="bg-slate-50 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
               <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
               <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-              <span className="text-xs font-mono text-slate-400 ml-2">bash — casmotif-pipeline</span>
+              <span className="text-xs font-mono text-slate-600 ml-2">bash — casmotif-pipeline</span>
             </div>
 
             <button
               onClick={copyCode}
-              className="px-3 py-1 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-1.5 transition-all active:scale-95"
+              className="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5 transition-all active:scale-95"
             >
               {copied ? '✓ Copied to Clipboard!' : '📋 Copy Script'}
             </button>
           </div>
 
-          <div className="bg-[#05070d] p-5 sm:p-6 overflow-x-auto font-mono text-xs text-slate-200 leading-relaxed">
+          <div className="bg-slate-50 p-5 sm:p-6 overflow-x-auto font-mono text-xs text-slate-800 leading-relaxed">
             <pre><code>{codeString}</code></pre>
           </div>
         </div>
@@ -127,16 +127,16 @@ python -m pipeline_w.multiseed`;
         <div className="glass-panel p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] pulse-indicator" />
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-white">Academic References</h3>
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900">Academic References</h3>
           </div>
-          <p className="text-slate-400 text-xs sm:text-sm mb-6">
+          <p className="text-slate-600 text-xs sm:text-sm mb-6">
             Key literature establishing foundational cascade theory, temporal motifs, and baseline architectures:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {references.map((r) => (
-              <div key={r.id} className="glass-card p-4 text-xs text-slate-300 leading-relaxed hover:border-white/20 transition-all flex items-start gap-3">
-                <span className="font-mono text-[#38bdf8] font-bold text-sm">[{r.id}]</span>
+              <div key={r.id} className="glass-card p-4 text-xs text-slate-700 leading-relaxed hover:border-slate-300 transition-all flex items-start gap-3">
+                <span className="font-mono text-[#0284c7] font-bold text-sm">[{r.id}]</span>
                 <div className="flex-1">
                   <span className="text-[10px] font-mono px-1.5 py-0.2 rounded badge-indigo font-bold mr-2 inline-block mb-1">
                     {r.venue}

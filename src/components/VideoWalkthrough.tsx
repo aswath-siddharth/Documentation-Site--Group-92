@@ -145,7 +145,7 @@ export default function VideoWalkthrough() {
   const totS = Math.floor(totalDuration % 60).toString().padStart(2, '0');
 
   return (
-    <section id="video-demo" className="py-24 relative bg-[#070b14]/70 border-t border-white/5">
+    <section id="video-demo" className="py-24 relative bg-slate-50/70 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -153,18 +153,18 @@ export default function VideoWalkthrough() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#c084fc]" />
             05 • Demonstration Showcase
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight mb-4">
             Interactive Walkthrough Demo
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-700 text-base sm:text-lg">
             Experience the visual slide presentation showcasing each core module, dynamic CSR arrays, causal motif extraction, and multi-seed evaluations.
           </p>
         </div>
 
         {/* Video Player Box */}
-        <div className="glass-panel overflow-hidden border border-white/12 shadow-2xl shadow-black/80">
+        <div className="glass-panel overflow-hidden border border-slate-200 shadow-2xl shadow-slate-900/10">
           {/* Main Visual Display Screen */}
-          <div className="p-8 sm:p-14 bg-gradient-to-b from-[#05070d] to-[#090d16] min-h-[440px] flex flex-col justify-center items-center text-center relative overflow-hidden">
+          <div className="p-8 sm:p-14 bg-gradient-to-b from-slate-50 to-white min-h-[440px] flex flex-col justify-center items-center text-center relative overflow-hidden">
             {/* Screen background glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#6366f1]/10 rounded-full blur-[90px] pointer-events-none" />
 
@@ -173,19 +173,19 @@ export default function VideoWalkthrough() {
                 {currentChapter.badge}
               </span>
 
-              <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-white mb-6 tracking-tight text-balance">
+              <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-6 tracking-tight text-balance">
                 {currentChapter.headline}
               </h3>
 
               {/* Visual Mini Graphic */}
               <div className="w-full max-w-2xl mb-8">
                 {currentChapter.visualType === 'problem' && (
-                  <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-around gap-4 border border-white/10">
+                  <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-around gap-4 border border-slate-200">
                     <div className="text-center">
                       <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#f59e0b] to-[#fbbf24] text-white font-bold flex items-center justify-center mx-auto mb-2 shadow-lg shadow-[#f59e0b]/30 text-lg">
                         u0
                       </div>
-                      <span className="text-xs font-medium text-slate-300">Root Tweet</span>
+                      <span className="text-xs font-medium text-slate-700">Root Tweet</span>
                     </div>
                     <div className="text-2xl text-[#6366f1] rotate-90 sm:rotate-0 font-bold">&rarr;</div>
                     <div className="space-y-2">
@@ -201,16 +201,16 @@ export default function VideoWalkthrough() {
                 )}
 
                 {currentChapter.visualType === 'csr' && (
-                  <div className="glass-card p-6 text-left font-mono text-xs space-y-3 border border-white/10">
-                    <div className="text-[#38bdf8] font-bold text-sm">Dynamic 1D Contiguous Buffers:</div>
-                    <div className="flex items-center gap-3 bg-black/40 p-2.5 rounded-lg border border-white/5">
-                      <span className="text-slate-400 w-16 font-bold">indptr:</span>
-                      <span className="bg-[#6366f1]/25 border border-[#6366f1] px-3 py-1 rounded text-white font-bold">[0, 2, 3, 4, 4]</span>
+                  <div className="glass-card p-6 text-left font-mono text-xs space-y-3 border border-slate-200">
+                    <div className="text-[#0284c7] font-bold text-sm">Dynamic 1D Contiguous Buffers:</div>
+                    <div className="flex items-center gap-3 bg-slate-50 p-2.5 rounded-lg border border-slate-200/70">
+                      <span className="text-slate-600 w-16 font-bold">indptr:</span>
+                      <span className="bg-[#6366f1]/25 border border-[#6366f1] px-3 py-1 rounded text-slate-900 font-bold">[0, 2, 3, 4, 4]</span>
                       <span className="text-slate-500 text-[11px]">(|V|+1 pointers)</span>
                     </div>
-                    <div className="flex items-center gap-3 bg-black/40 p-2.5 rounded-lg border border-white/5">
-                      <span className="text-slate-400 w-16 font-bold">indices:</span>
-                      <span className="bg-[#06b6d4]/25 border border-[#06b6d4] px-3 py-1 rounded text-white font-bold">[1, 2, 2, 3]</span>
+                    <div className="flex items-center gap-3 bg-slate-50 p-2.5 rounded-lg border border-slate-200/70">
+                      <span className="text-slate-600 w-16 font-bold">indices:</span>
+                      <span className="bg-[#06b6d4]/25 border border-[#06b6d4] px-3 py-1 rounded text-slate-900 font-bold">[1, 2, 2, 3]</span>
                       <span className="text-slate-500 text-[11px]">(contiguous neighbors)</span>
                     </div>
                   </div>
@@ -218,63 +218,63 @@ export default function VideoWalkthrough() {
 
                 {currentChapter.visualType === 'motifs' && (
                   <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="glass-card p-4 border border-white/10">
-                      <div className="text-sm font-bold text-[#38bdf8] mb-1">Star Fork</div>
-                      <div className="text-xs text-slate-400 font-mono">v &larr; u &rarr; w (O(1))</div>
+                    <div className="glass-card p-4 border border-slate-200">
+                      <div className="text-sm font-bold text-[#0284c7] mb-1">Star Fork</div>
+                      <div className="text-xs text-slate-600 font-mono">v &larr; u &rarr; w (O(1))</div>
                       <span className="text-[10px] font-mono px-1.5 py-0.5 rounded badge-cyan mt-2 inline-block">Broadcast Hub</span>
                     </div>
-                    <div className="glass-card p-4 border border-white/10">
-                      <div className="text-sm font-bold text-[#818cf8] mb-1">Deep Chain</div>
-                      <div className="text-xs text-slate-400 font-mono">depth &ge; 3 (O(1))</div>
+                    <div className="glass-card p-4 border border-slate-200">
+                      <div className="text-sm font-bold text-[#4f46e5] mb-1">Deep Chain</div>
+                      <div className="text-xs text-slate-600 font-mono">depth &ge; 3 (O(1))</div>
                       <span className="text-[10px] font-mono px-1.5 py-0.5 rounded badge-indigo mt-2 inline-block">Viral Depth</span>
                     </div>
-                    <div className="glass-card p-4 border border-white/10">
+                    <div className="glass-card p-4 border border-slate-200">
                       <div className="text-sm font-bold text-[#ec4899] mb-1">3-Cycle Triad</div>
-                      <div className="text-xs text-slate-400 font-mono">u &rarr; v &rarr; w &rarr; u</div>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#ec4899]/15 text-[#f472b6] border border-[#ec4899]/30 mt-2 inline-block">Dense Closure</span>
+                      <div className="text-xs text-slate-600 font-mono">u &rarr; v &rarr; w &rarr; u</div>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#ec4899]/15 text-[#db2777] border border-[#ec4899]/30 mt-2 inline-block">Dense Closure</span>
                     </div>
                   </div>
                 )}
 
                 {currentChapter.visualType === 'neural' && (
-                  <div className="glass-card p-5 flex items-center justify-between font-mono text-xs text-center border border-white/10">
-                    <div className="text-[#38bdf8] font-bold">15-D Vectors<br /><span className="text-slate-400 text-[10px]">[B, K, 15]</span></div>
+                  <div className="glass-card p-5 flex items-center justify-between font-mono text-xs text-center border border-slate-200">
+                    <div className="text-[#0284c7] font-bold">15-D Vectors<br /><span className="text-slate-600 text-[10px]">[B, K, 15]</span></div>
                     <div className="text-[#6366f1] font-bold">&rarr;</div>
-                    <div className="text-[#818cf8] font-bold">BiGRU (D=64)<br /><span className="text-slate-400 text-[10px]">[B, K, 128]</span></div>
+                    <div className="text-[#4f46e5] font-bold">BiGRU (D=64)<br /><span className="text-slate-600 text-[10px]">[B, K, 128]</span></div>
                     <div className="text-[#6366f1] font-bold">&rarr;</div>
-                    <div className="text-[#34d399] font-bold">Attentive Pool<br /><span className="text-slate-400 text-[10px]">c = &Sigma; &alpha;<sub>j</sub> h<sub>j</sub></span></div>
+                    <div className="text-[#059669] font-bold">Attentive Pool<br /><span className="text-slate-600 text-[10px]">c = &Sigma; &alpha;<sub>j</sub> h<sub>j</sub></span></div>
                     <div className="text-[#6366f1] font-bold">&rarr;</div>
-                    <div className="text-[#fbbf24] font-bold">MLP Head<br /><span className="text-slate-400 text-[10px]">log₂(&Delta;P + 1)</span></div>
+                    <div className="text-[#d97706] font-bold">MLP Head<br /><span className="text-slate-600 text-[10px]">log₂(&Delta;P + 1)</span></div>
                   </div>
                 )}
 
                 {currentChapter.visualType === 'benchmarks' && (
                   <div className="glass-card p-5 flex justify-around text-center border border-[#10b981]/30">
                     <div>
-                      <div className="font-display font-black text-3xl text-[#34d399]">1.9845</div>
-                      <div className="text-xs text-slate-400 mt-1">CasMotif MSLE (3-Seed)</div>
+                      <div className="font-display font-black text-3xl text-[#059669]">1.9845</div>
+                      <div className="text-xs text-slate-600 mt-1">CasMotif MSLE (3-Seed)</div>
                     </div>
                     <div>
-                      <div className="font-display font-black text-3xl text-[#818cf8]">1.9864</div>
-                      <div className="text-xs text-slate-400 mt-1">CasSubTS SOTA MSLE</div>
+                      <div className="font-display font-black text-3xl text-[#4f46e5]">1.9864</div>
+                      <div className="text-xs text-slate-600 mt-1">CasSubTS SOTA MSLE</div>
                     </div>
                     <div>
-                      <div className="font-display font-black text-3xl text-[#38bdf8]">3.1×</div>
-                      <div className="text-xs text-slate-400 mt-1">Fewer Parameters (50k vs 154k)</div>
+                      <div className="font-display font-black text-3xl text-[#0284c7]">3.1×</div>
+                      <div className="text-xs text-slate-600 mt-1">Fewer Parameters (50k vs 154k)</div>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Narration */}
-              <p className="text-slate-300 text-sm max-w-2xl leading-relaxed mb-6">
+              <p className="text-slate-700 text-sm max-w-2xl leading-relaxed mb-6">
                 {currentChapter.narration}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full text-left text-xs text-slate-400">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full text-left text-xs text-slate-600">
                 {currentChapter.bullets.map((b, i) => (
-                  <div key={i} className="bg-black/30 p-2.5 rounded-lg border border-white/5 flex items-start gap-2">
-                    <span className="text-[#34d399] font-bold">✓</span>
+                  <div key={i} className="bg-slate-50 p-2.5 rounded-lg border border-slate-200/70 flex items-start gap-2">
+                    <span className="text-[#059669] font-bold">✓</span>
                     <span>{b}</span>
                   </div>
                 ))}
@@ -283,10 +283,10 @@ export default function VideoWalkthrough() {
           </div>
 
           {/* Control Bar */}
-          <div className="p-4 sm:p-6 bg-[#080c16] border-t border-white/10">
+          <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200">
             {/* Scrubber Timeline */}
             <div
-              className="w-full h-2.5 bg-white/10 rounded-full cursor-pointer relative mb-5 overflow-hidden group"
+              className="w-full h-2.5 bg-slate-100 rounded-full cursor-pointer relative mb-5 overflow-hidden group"
               onClick={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
@@ -312,7 +312,7 @@ export default function VideoWalkthrough() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => selectChapter(Math.max(0, currentIdx - 1))}
-                  className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs font-semibold"
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 hover:bg-slate-100 text-xs font-semibold"
                 >
                   ⏮ Prev
                 </button>
@@ -327,12 +327,12 @@ export default function VideoWalkthrough() {
 
                 <button
                   onClick={() => selectChapter(Math.min(CHAPTERS.length - 1, currentIdx + 1))}
-                  className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs font-semibold"
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 hover:bg-slate-100 text-xs font-semibold"
                 >
                   Next ⏭
                 </button>
 
-                <span className="font-mono text-xs text-slate-400 ml-2">
+                <span className="font-mono text-xs text-slate-600 ml-2">
                   {curM}:{curS} / {totM}:{totS}
                 </span>
               </div>
@@ -345,8 +345,8 @@ export default function VideoWalkthrough() {
                     onClick={() => selectChapter(i)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                       i === currentIdx
-                        ? 'bg-[#6366f1]/30 border border-[#818cf8] text-white shadow-sm'
-                        : 'bg-white/5 border border-white/5 text-slate-400 hover:text-white'
+                        ? 'bg-[#6366f1]/30 border border-[#818cf8] text-slate-900 shadow-sm'
+                        : 'bg-slate-50 border border-slate-200/70 text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     {chap.title}
