@@ -16,7 +16,7 @@ interface WalkthroughChapter {
 const CHAPTERS: WalkthroughChapter[] = [
   {
     id: "problem",
-    title: "1. Problem & Information Cascades",
+    title: "1. Problem & Cascades",
     badge: "TASK FORMULATION",
     headline: "Forecasting 24-Hour Virality from 15-Minute Continuous Signals",
     durationSec: 15,
@@ -30,7 +30,7 @@ const CHAPTERS: WalkthroughChapter[] = [
   },
   {
     id: "csr",
-    title: "2. Dynamic CSR Graph Memory",
+    title: "2. Dynamic CSR Memory",
     badge: "SUB-QUADRATIC COMPLEXITY",
     headline: "Replacing Heavy Python Objects with Contiguous 1D RAM Slices",
     durationSec: 20,
@@ -44,7 +44,7 @@ const CHAPTERS: WalkthroughChapter[] = [
   },
   {
     id: "motifs",
-    title: "3. 5 Causal Motifs on G_{t−}",
+    title: "3. 5 Causal Motifs",
     badge: "STRICT CAUSALITY GUARANTEE",
     headline: "Zero Lookahead Leakage via Micro-Topological Slice Evaluation",
     durationSec: 25,
@@ -60,7 +60,7 @@ const CHAPTERS: WalkthroughChapter[] = [
   },
   {
     id: "neural",
-    title: "4. BiGRU & Attentive Pooling",
+    title: "4. Neural Sequence Head",
     badge: "NEURAL SEQUENCE LEARNER",
     headline: "Linear O(K) Attention Pooling with Masked Softmax",
     durationSec: 25,
@@ -74,7 +74,7 @@ const CHAPTERS: WalkthroughChapter[] = [
   },
   {
     id: "benchmarks",
-    title: "5. Controlled SOTA Benchmark",
+    title: "5. SOTA Benchmark",
     badge: "42,186 SINA WEIBO CASCADES",
     headline: "Statistical Parity with 2025 SOTA at 3.1× Fewer Parameters",
     durationSec: 25,
@@ -145,139 +145,148 @@ export default function VideoWalkthrough() {
   const totS = Math.floor(totalDuration % 60).toString().padStart(2, '0');
 
   return (
-    <section id="video-demo" className="py-20 relative bg-[#090d16]/60 border-y border-white/5">
+    <section id="video-demo" className="py-24 relative bg-[#070b14]/70 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#c084fc] block mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-purple text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c084fc]" />
             05 • Demonstration Showcase
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
-            Demonstration Video &amp; Interactive Walkthrough
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
+            Interactive Walkthrough Demo
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
-            Experience the interactive visual presentation showcasing each core module, dynamic CSR arrays, causal motif extraction, and multi-seed evaluations.
+            Experience the visual slide presentation showcasing each core module, dynamic CSR arrays, causal motif extraction, and multi-seed evaluations.
           </p>
         </div>
 
         {/* Video Player Box */}
-        <div className="bg-[#151d30] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
+        <div className="glass-panel overflow-hidden border border-white/12 shadow-2xl shadow-black/80">
           {/* Main Visual Display Screen */}
-          <div className="p-8 sm:p-12 bg-[#05070c] min-h-[420px] flex flex-col justify-center items-center text-center relative overflow-hidden">
-            <span className="inline-block font-mono text-xs font-semibold px-3 py-1 rounded-full bg-[#6366f1]/15 text-[#818cf8] border border-[#6366f1]/30 mb-4">
-              {currentChapter.badge}
-            </span>
+          <div className="p-8 sm:p-14 bg-gradient-to-b from-[#05070d] to-[#090d16] min-h-[440px] flex flex-col justify-center items-center text-center relative overflow-hidden">
+            {/* Screen background glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#6366f1]/10 rounded-full blur-[90px] pointer-events-none" />
 
-            <h3 className="font-display font-bold text-2xl sm:text-3xl text-white max-w-3xl mb-6 tracking-tight">
-              {currentChapter.headline}
-            </h3>
+            <div className="relative z-10 max-w-3xl flex flex-col items-center">
+              <span className="inline-block font-mono text-xs font-bold px-3 py-1 rounded-full badge-indigo mb-4 uppercase tracking-wider">
+                {currentChapter.badge}
+              </span>
 
-            {/* Visual Mini Graphic */}
-            <div className="w-full max-w-xl mb-6">
-              {currentChapter.visualType === 'problem' && (
-                <div className="bg-white/5 border border-white/10 rounded-xl p-5 flex items-center justify-around">
-                  <div className="text-center">
-                    <div className="w-12 h-12 rounded-full bg-[#f59e0b] text-white font-bold flex items-center justify-center mx-auto mb-2 shadow-lg shadow-[#f59e0b]/30">
-                      u0
+              <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-white mb-6 tracking-tight text-balance">
+                {currentChapter.headline}
+              </h3>
+
+              {/* Visual Mini Graphic */}
+              <div className="w-full max-w-2xl mb-8">
+                {currentChapter.visualType === 'problem' && (
+                  <div className="glass-card p-6 flex flex-col sm:flex-row items-center justify-around gap-4 border border-white/10">
+                    <div className="text-center">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#f59e0b] to-[#fbbf24] text-white font-bold flex items-center justify-center mx-auto mb-2 shadow-lg shadow-[#f59e0b]/30 text-lg">
+                        u0
+                      </div>
+                      <span className="text-xs font-medium text-slate-300">Root Tweet</span>
                     </div>
-                    <span className="text-xs text-slate-300">Root Message</span>
-                  </div>
-                  <div className="text-2xl text-[#6366f1]">➔</div>
-                  <div className="space-y-2">
-                    <div className="flex gap-2">
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#38bdf8]/20 text-[#38bdf8]">t = 12s (u1)</span>
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#38bdf8]/20 text-[#38bdf8]">t = 45s (u2)</span>
+                    <div className="text-2xl text-[#6366f1] rotate-90 sm:rotate-0 font-bold">&rarr;</div>
+                    <div className="space-y-2">
+                      <div className="flex gap-2 justify-center">
+                        <span className="text-xs font-mono px-2.5 py-1 rounded badge-cyan font-bold">t = 12s (u1)</span>
+                        <span className="text-xs font-mono px-2.5 py-1 rounded badge-cyan font-bold">t = 45s (u2)</span>
+                      </div>
+                      <div className="text-xs px-3 py-1.5 rounded-lg badge-emerald font-semibold">
+                        T_obs = 15m &rarr; Predict 24h &Delta;P increment
+                      </div>
                     </div>
-                    <div className="text-xs px-3 py-1 rounded bg-[#10b981]/15 border border-[#10b981]/30 text-[#34d399]">
-                      T_obs = 15m ➔ Predict 24h Increment
+                  </div>
+                )}
+
+                {currentChapter.visualType === 'csr' && (
+                  <div className="glass-card p-6 text-left font-mono text-xs space-y-3 border border-white/10">
+                    <div className="text-[#38bdf8] font-bold text-sm">Dynamic 1D Contiguous Buffers:</div>
+                    <div className="flex items-center gap-3 bg-black/40 p-2.5 rounded-lg border border-white/5">
+                      <span className="text-slate-400 w-16 font-bold">indptr:</span>
+                      <span className="bg-[#6366f1]/25 border border-[#6366f1] px-3 py-1 rounded text-white font-bold">[0, 2, 3, 4, 4]</span>
+                      <span className="text-slate-500 text-[11px]">(|V|+1 pointers)</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-black/40 p-2.5 rounded-lg border border-white/5">
+                      <span className="text-slate-400 w-16 font-bold">indices:</span>
+                      <span className="bg-[#06b6d4]/25 border border-[#06b6d4] px-3 py-1 rounded text-white font-bold">[1, 2, 2, 3]</span>
+                      <span className="text-slate-500 text-[11px]">(contiguous neighbors)</span>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {currentChapter.visualType === 'csr' && (
-                <div className="bg-[#0f172a] border border-white/10 rounded-xl p-5 text-left font-mono text-xs space-y-2">
-                  <div className="text-[#38bdf8] font-bold">Dynamic 1D Contiguous Buffers:</div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-slate-400 w-16">indptr:</span>
-                    <span className="bg-[#6366f1]/20 border border-[#6366f1] px-2.5 py-0.5 rounded text-white">[0, 2, 3, 4, 4]</span>
-                    <span className="text-slate-500 text-[11px]">(|V|+1 pointers)</span>
+                {currentChapter.visualType === 'motifs' && (
+                  <div className="grid grid-cols-3 gap-3 text-center">
+                    <div className="glass-card p-4 border border-white/10">
+                      <div className="text-sm font-bold text-[#38bdf8] mb-1">Star Fork</div>
+                      <div className="text-xs text-slate-400 font-mono">v &larr; u &rarr; w (O(1))</div>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded badge-cyan mt-2 inline-block">Broadcast Hub</span>
+                    </div>
+                    <div className="glass-card p-4 border border-white/10">
+                      <div className="text-sm font-bold text-[#818cf8] mb-1">Deep Chain</div>
+                      <div className="text-xs text-slate-400 font-mono">depth &ge; 3 (O(1))</div>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded badge-indigo mt-2 inline-block">Viral Depth</span>
+                    </div>
+                    <div className="glass-card p-4 border border-white/10">
+                      <div className="text-sm font-bold text-[#ec4899] mb-1">3-Cycle Triad</div>
+                      <div className="text-xs text-slate-400 font-mono">u &rarr; v &rarr; w &rarr; u</div>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#ec4899]/15 text-[#f472b6] border border-[#ec4899]/30 mt-2 inline-block">Dense Closure</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-slate-400 w-16">indices:</span>
-                    <span className="bg-[#06b6d4]/20 border border-[#06b6d4] px-2.5 py-0.5 rounded text-white">[1, 2, 2, 3]</span>
-                    <span className="text-slate-500 text-[11px]">(contiguous neighbors)</span>
-                  </div>
-                </div>
-              )}
+                )}
 
-              {currentChapter.visualType === 'motifs' && (
-                <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-                    <div className="text-xs font-bold text-[#38bdf8]">Star Fork</div>
-                    <div className="text-[10px] text-slate-400">v ← u → w (O(1))</div>
+                {currentChapter.visualType === 'neural' && (
+                  <div className="glass-card p-5 flex items-center justify-between font-mono text-xs text-center border border-white/10">
+                    <div className="text-[#38bdf8] font-bold">15-D Vectors<br /><span className="text-slate-400 text-[10px]">[B, K, 15]</span></div>
+                    <div className="text-[#6366f1] font-bold">&rarr;</div>
+                    <div className="text-[#818cf8] font-bold">BiGRU (D=64)<br /><span className="text-slate-400 text-[10px]">[B, K, 128]</span></div>
+                    <div className="text-[#6366f1] font-bold">&rarr;</div>
+                    <div className="text-[#34d399] font-bold">Attentive Pool<br /><span className="text-slate-400 text-[10px]">c = &Sigma; &alpha;<sub>j</sub> h<sub>j</sub></span></div>
+                    <div className="text-[#6366f1] font-bold">&rarr;</div>
+                    <div className="text-[#fbbf24] font-bold">MLP Head<br /><span className="text-slate-400 text-[10px]">log₂(&Delta;P + 1)</span></div>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-                    <div className="text-xs font-bold text-[#818cf8]">Deep Chain</div>
-                    <div className="text-[10px] text-slate-400">depth ≥ 3 (O(1))</div>
-                  </div>
-                  <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-                    <div className="text-xs font-bold text-[#ec4899]">3-Cycle Triad</div>
-                    <div className="text-[10px] text-slate-400">u → v → w → u</div>
-                  </div>
-                </div>
-              )}
+                )}
 
-              {currentChapter.visualType === 'neural' && (
-                <div className="bg-black/40 border border-white/10 rounded-xl p-4 flex items-center justify-between font-mono text-[11px] text-center">
-                  <div className="text-[#38bdf8]">15-D Vectors<br />[B, K_max, 15]</div>
-                  <div className="text-[#6366f1]">➔</div>
-                  <div className="text-[#818cf8]">BiGRU (D=64)<br />[B, K_max, 128]</div>
-                  <div className="text-[#6366f1]">➔</div>
-                  <div className="text-[#34d399]">Attentive Pool<br />c = Σ α_j h_j</div>
-                  <div className="text-[#6366f1]">➔</div>
-                  <div className="text-[#f59e0b]">MLP Head<br />log₂(ΔP̂ + 1)</div>
-                </div>
-              )}
+                {currentChapter.visualType === 'benchmarks' && (
+                  <div className="glass-card p-5 flex justify-around text-center border border-[#10b981]/30">
+                    <div>
+                      <div className="font-display font-black text-3xl text-[#34d399]">1.9845</div>
+                      <div className="text-xs text-slate-400 mt-1">CasMotif MSLE (3-Seed)</div>
+                    </div>
+                    <div>
+                      <div className="font-display font-black text-3xl text-[#818cf8]">1.9864</div>
+                      <div className="text-xs text-slate-400 mt-1">CasSubTS SOTA MSLE</div>
+                    </div>
+                    <div>
+                      <div className="font-display font-black text-3xl text-[#38bdf8]">3.1×</div>
+                      <div className="text-xs text-slate-400 mt-1">Fewer Parameters (50k vs 154k)</div>
+                    </div>
+                  </div>
+                )}
+              </div>
 
-              {currentChapter.visualType === 'benchmarks' && (
-                <div className="bg-[#10b981]/10 border border-[#10b981]/30 rounded-xl p-4 flex justify-around text-center">
-                  <div>
-                    <div className="font-display font-bold text-2xl text-[#34d399]">1.9845</div>
-                    <div className="text-[11px] text-slate-400">CasMotif MSLE (3-Seed)</div>
+              {/* Narration */}
+              <p className="text-slate-300 text-sm max-w-2xl leading-relaxed mb-6">
+                {currentChapter.narration}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full text-left text-xs text-slate-400">
+                {currentChapter.bullets.map((b, i) => (
+                  <div key={i} className="bg-black/30 p-2.5 rounded-lg border border-white/5 flex items-start gap-2">
+                    <span className="text-[#34d399] font-bold">✓</span>
+                    <span>{b}</span>
                   </div>
-                  <div>
-                    <div className="font-display font-bold text-2xl text-[#818cf8]">1.9864</div>
-                    <div className="text-[11px] text-slate-400">CasSubTS SOTA MSLE</div>
-                  </div>
-                  <div>
-                    <div className="font-display font-bold text-2xl text-[#38bdf8]">3.1×</div>
-                    <div className="text-[11px] text-slate-400">Fewer Parameters (50k vs 154k)</div>
-                  </div>
-                </div>
-              )}
+                ))}
+              </div>
             </div>
-
-            {/* Narration */}
-            <p className="text-slate-300 text-sm max-w-2xl leading-relaxed mb-4">
-              {currentChapter.narration}
-            </p>
-
-            <ul className="text-left text-xs text-slate-400 space-y-1.5 max-w-xl">
-              {currentChapter.bullets.map((b, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#34d399] font-bold">✓</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Control Bar */}
-          <div className="p-4 sm:p-5 bg-[#090d16] border-t border-white/10">
+          <div className="p-4 sm:p-6 bg-[#080c16] border-t border-white/10">
             {/* Scrubber Timeline */}
             <div
-              className="w-full h-2 bg-white/10 rounded-full cursor-pointer relative mb-4 overflow-hidden"
+              className="w-full h-2.5 bg-white/10 rounded-full cursor-pointer relative mb-5 overflow-hidden group"
               onClick={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
@@ -303,21 +312,22 @@ export default function VideoWalkthrough() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => selectChapter(Math.max(0, currentIdx - 1))}
-                  className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs font-semibold"
                 >
                   ⏮ Prev
                 </button>
 
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="w-9 h-9 rounded-full bg-[#6366f1] hover:bg-[#4f46e5] text-white flex items-center justify-center shadow-lg shadow-[#6366f1]/30 transition-transform active:scale-95"
+                  className="w-10 h-10 rounded-full bg-gradient-to-r from-[#6366f1] to-[#4f46e5] hover:brightness-110 text-white flex items-center justify-center shadow-lg shadow-[#6366f1]/30 transition-transform active:scale-95"
+                  aria-label={isPlaying ? 'Pause' : 'Play'}
                 >
                   {isPlaying ? '⏸' : '▶'}
                 </button>
 
                 <button
                   onClick={() => selectChapter(Math.min(CHAPTERS.length - 1, currentIdx + 1))}
-                  className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs"
+                  className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 text-xs font-semibold"
                 >
                   Next ⏭
                 </button>
@@ -333,9 +343,9 @@ export default function VideoWalkthrough() {
                   <button
                     key={chap.id}
                     onClick={() => selectChapter(i)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                       i === currentIdx
-                        ? 'bg-[#6366f1]/25 border border-[#818cf8] text-white shadow-sm'
+                        ? 'bg-[#6366f1]/30 border border-[#818cf8] text-white shadow-sm'
                         : 'bg-white/5 border border-white/5 text-slate-400 hover:text-white'
                     }`}
                   >

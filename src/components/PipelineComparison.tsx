@@ -6,14 +6,15 @@ export default function PipelineComparison() {
   const [pipeline, setPipeline] = useState<'weibo' | 'reddit'>('weibo');
 
   return (
-    <section id="pipelines" className="py-20 relative bg-[#090d16]/50 border-y border-white/5">
+    <section id="pipelines" className="py-24 relative bg-[#070b14]/60 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#38bdf8] block mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-cyan text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4]" />
             03 • System Architecture
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
             End-to-End Processing Pipelines
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
@@ -22,92 +23,121 @@ export default function PipelineComparison() {
         </div>
 
         {/* Switcher Buttons */}
-        <div className="flex justify-center gap-3 mb-10">
-          <button
-            onClick={() => setPipeline('weibo')}
-            className={`px-6 py-2.5 rounded-xl font-semibold text-sm transition-all ${
-              pipeline === 'weibo'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
-            }`}
-          >
-            Pipeline W (Sina Weibo Benchmark)
-          </button>
-          <button
-            onClick={() => setPipeline('reddit')}
-            className={`px-6 py-2.5 rounded-xl font-semibold text-sm transition-all ${
-              pipeline === 'reddit'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
-            }`}
-          >
-            Pipelines A, B, C (Reddit Classification)
-          </button>
+        <div className="flex justify-center mb-12">
+          <div className="p-1.5 rounded-2xl bg-[#080d18] border border-white/10 flex gap-2">
+            <button
+              onClick={() => setPipeline('weibo')}
+              className={`px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
+                pipeline === 'weibo'
+                  ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span>Pipeline W (Sina Weibo Benchmark)</span>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/20 text-white font-bold">42.2k</span>
+            </button>
+            <button
+              onClick={() => setPipeline('reddit')}
+              className={`px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
+                pipeline === 'reddit'
+                  ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                  : 'text-slate-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span>Pipelines A, B, C (Reddit Virality)</span>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/20 text-white font-bold">Decoupled</span>
+            </button>
+          </div>
         </div>
 
         {/* Weibo Pipeline W */}
         {pipeline === 'weibo' && (
-          <div className="bg-[#151d30] border border-white/10 rounded-2xl p-6 sm:p-8">
-            <div className="mb-6">
-              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-[#38bdf8]/15 text-[#38bdf8] uppercase">
-                Continuous Regression Benchmark • 42,186 Cascades
+          <div className="glass-panel p-6 sm:p-8 animate-in fade-in duration-300">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+              <div>
+                <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-cyan uppercase mb-2 inline-block">
+                  Continuous Regression Benchmark • 42,186 Cascades
+                </span>
+                <h3 className="font-display font-bold text-2xl text-white mt-1">
+                  Pipeline W Workflow: Continuous Ingestion to 24-Hour Popularity
+                </h3>
+              </div>
+              <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                Chronological 70:15:15 Split
               </span>
-              <h3 className="font-display font-bold text-2xl text-white mt-2">
-                Pipeline W Workflow: Continuous Ingestion to 24-Hour Popularity
-              </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="glass-card p-5 relative">
-                <div className="w-7 h-7 rounded-full bg-[#6366f1] text-white font-bold text-xs flex items-center justify-center mb-3">
-                  1
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+              {/* Step 1 */}
+              <div className="glass-card p-6 border-t-2 border-t-[#6366f1] relative group flex flex-col justify-between">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-[#6366f1]/20 border border-[#6366f1]/40 text-[#818cf8] font-bold text-xs flex items-center justify-center mb-4">
+                    01
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base mb-1.5">Raw Stream Ingestion</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Parsed from DeepHawkes Weibo bundle. Retains posts between 08:00–18:59 Beijing time and sizes <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">10 ≤ N ≤ 1000</code>.
+                  </p>
                 </div>
-                <h4 className="font-display font-bold text-white text-base mb-1">Raw Stream Ingestion</h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-3">
-                  Parsed from DeepHawkes Weibo bundle. Retains posts between 08:00–18:59 Beijing time and sizes <code className="text-slate-200">10 ≤ N ≤ 1000</code>.
-                </p>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400">
-                  Chronological 70:15:15
-                </span>
+                <div className="pt-3 border-t border-white/5">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400 block text-center">
+                    Parent-Child Stream
+                  </span>
+                </div>
               </div>
 
-              <div className="glass-card p-5 relative">
-                <div className="w-7 h-7 rounded-full bg-[#06b6d4] text-white font-bold text-xs flex items-center justify-center mb-3">
-                  2
+              {/* Step 2 */}
+              <div className="glass-card p-6 border-t-2 border-t-[#06b6d4] relative group flex flex-col justify-between">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-[#06b6d4]/20 border border-[#06b6d4]/40 text-[#38bdf8] font-bold text-xs flex items-center justify-center mb-4">
+                    02
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base mb-1.5">Dynamic CSR Engine</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Incrementally updates <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">indptr</code>, <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">indices</code>, and <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">timestamps</code> arrays in contiguous RAM with zero pointer-chasing.
+                  </p>
                 </div>
-                <h4 className="font-display font-bold text-white text-base mb-1">Dynamic CSR Engine</h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-3">
-                  Incrementally updates <code className="text-slate-200">indptr</code>, <code className="text-slate-200">indices</code>, and <code className="text-slate-200">timestamps</code> arrays in RAM.
-                </p>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400">
-                  O(1) Slice Lookups
-                </span>
+                <div className="pt-3 border-t border-white/5">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded badge-cyan block text-center">
+                    O(1) Slice Lookups
+                  </span>
+                </div>
               </div>
 
-              <div className="glass-card p-5 relative">
-                <div className="w-7 h-7 rounded-full bg-[#10b981] text-white font-bold text-xs flex items-center justify-center mb-3">
-                  3
+              {/* Step 3 */}
+              <div className="glass-card p-6 border-t-2 border-t-[#10b981] relative group flex flex-col justify-between">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/20 border border-[#10b981]/40 text-[#34d399] font-bold text-xs flex items-center justify-center mb-4">
+                    03
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base mb-1.5">Causal Extraction</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Detects 5 motifs and continuous temporal dynamics on <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">G_t−</code>. Strictly zero lookahead data leakage.
+                  </p>
                 </div>
-                <h4 className="font-display font-bold text-white text-base mb-1">Causal Vector Extraction</h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-3">
-                  Detects 5 motifs and continuous temporal dynamics on <code className="text-slate-200">G_{"{t−}"}</code>. Zero lookahead leakage.
-                </p>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400">
-                  [B, K_max, 15] NPZ
-                </span>
+                <div className="pt-3 border-t border-white/5">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded badge-emerald block text-center">
+                    [B, K_max, 15] NPZ
+                  </span>
+                </div>
               </div>
 
-              <div className="glass-card p-5 relative">
-                <div className="w-7 h-7 rounded-full bg-[#f59e0b] text-white font-bold text-xs flex items-center justify-center mb-3">
-                  4
+              {/* Step 4 */}
+              <div className="glass-card p-6 border-t-2 border-t-[#f59e0b] relative group flex flex-col justify-between">
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-[#f59e0b]/20 border border-[#f59e0b]/40 text-[#fbbf24] font-bold text-xs flex items-center justify-center mb-4">
+                    04
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base mb-1.5">Attentive BiGRU</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    BiGRU (D=64) + Attention Pooling + MLP Head trained on MSLE in log2 space: <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">y = log₂(ΔP + 1)</code>.
+                  </p>
                 </div>
-                <h4 className="font-display font-bold text-white text-base mb-1">Attentive BiGRU Learner</h4>
-                <p className="text-slate-400 text-xs leading-relaxed mb-3">
-                  BiGRU (D=64) + Attention Pooling + MLP Head trained on MSLE in log2 space: <code className="text-slate-200">y = log₂(ΔP + 1)</code>.
-                </p>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-slate-400">
-                  49,824 Parameters
-                </span>
+                <div className="pt-3 border-t border-white/5">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded badge-amber block text-center">
+                    49,824 Parameters
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -115,56 +145,67 @@ export default function PipelineComparison() {
 
         {/* Reddit Pipelines A, B, C */}
         {pipeline === 'reddit' && (
-          <div className="bg-[#151d30] border border-white/10 rounded-2xl p-6 sm:p-8">
-            <div className="mb-6">
-              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded bg-[#a855f7]/15 text-[#c084fc] uppercase">
-                Parallel Subreddit Virality Engine • Flat CSV Decoupling
+          <div className="glass-panel p-6 sm:p-8 animate-in fade-in duration-300">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+              <div>
+                <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-purple uppercase mb-2 inline-block">
+                  Parallel Subreddit Virality Engine • Flat CSV Decoupling
+                </span>
+                <h3 className="font-display font-bold text-2xl text-white mt-1">
+                  Pipelines A, B, C: Decoupled Real-Time Classification
+                </h3>
+              </div>
+              <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                P95 Cutoff Target
               </span>
-              <h3 className="font-display font-bold text-2xl text-white mt-2">
-                Pipelines A, B, C: Decoupled Real-Time Classification
-              </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="glass-card p-6 border-l-4 border-l-[#38bdf8]">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-display font-bold text-white text-lg">Pipeline A</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-slate-300">T ≤ 15 min</span>
+              <div className="glass-card p-6 border-l-4 border-l-[#38bdf8] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-display font-bold text-white text-lg">Pipeline A</h4>
+                    <span className="text-xs font-mono px-2 py-0.5 rounded badge-cyan">T ≤ 15 min</span>
+                  </div>
+                  <div className="text-sm font-semibold text-[#38bdf8] mb-2">Streaming Feature Engine</div>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Converts early comment streams into continuous N × 20 matrices using dynamic CSR and Worst-Case Optimal Joins (WCOJ) Leapfrog Triejoin iterators.
+                  </p>
                 </div>
-                <div className="text-sm font-semibold text-[#38bdf8] mb-2">Streaming Feature Engine</div>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  Converts early comment streams into continuous N × 20 matrices using dynamic CSR and Worst-Case Optimal Joins (WCOJ) Leapfrog Triejoin iterators. Evaluates multi-way edge joins in worst-case optimal time.
-                </p>
-                <div className="bg-[#090d16] p-2.5 rounded font-mono text-[11px] text-slate-300 border border-white/5">
+                <div className="bg-[#070b14] p-3 rounded-lg font-mono text-[11px] text-slate-300 border border-white/5">
                   Output: pipeline_a_features.csv (post_id, X_seq)
                 </div>
               </div>
 
-              <div className="glass-card p-6 border-l-4 border-l-[#818cf8]">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-display font-bold text-white text-lg">Pipeline B</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-slate-300">T = 24 hours</span>
+              <div className="glass-card p-6 border-l-4 border-l-[#818cf8] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-display font-bold text-white text-lg">Pipeline B</h4>
+                    <span className="text-xs font-mono px-2 py-0.5 rounded badge-indigo">T = 24 hours</span>
+                  </div>
+                  <div className="text-sm font-semibold text-[#818cf8] mb-2">Ground-Truth Target Engine</div>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Flattens 24h thread history, discarding late comments (&gt;86,400s). Groups posts by subreddit to compute dynamic 95th percentile (P95) volume cutoffs to assign binary virality labels.
+                  </p>
                 </div>
-                <div className="text-sm font-semibold text-[#818cf8] mb-2">Ground-Truth Target Engine</div>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  Flattens 24h thread history, discarding late comments (&gt;86,400s). Groups posts by subreddit to compute dynamic 95th percentile (P95) volume cutoffs to assign binary virality labels.
-                </p>
-                <div className="bg-[#090d16] p-2.5 rounded font-mono text-[11px] text-slate-300 border border-white/5">
+                <div className="bg-[#070b14] p-3 rounded-lg font-mono text-[11px] text-slate-300 border border-white/5">
                   Output: pipeline_b_labels.csv (post_id, y_viral)
                 </div>
               </div>
 
-              <div className="glass-card p-6 border-l-4 border-l-[#34d399]">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="font-display font-bold text-white text-lg">Pipeline C</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-slate-300">PyTorch Neural Model</span>
+              <div className="glass-card p-6 border-l-4 border-l-[#34d399] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="font-display font-bold text-white text-lg">Pipeline C</h4>
+                    <span className="text-xs font-mono px-2 py-0.5 rounded badge-emerald">PyTorch Neural</span>
+                  </div>
+                  <div className="text-sm font-semibold text-[#34d399] mb-2">Hybrid Neural Learning Engine</div>
+                  <p className="text-slate-400 text-xs leading-relaxed mb-4">
+                    Inner joins Pipeline A and B on <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">post_id</code>. Batches variable sequences into [B, K_max, 20] tensors. Trains BiGRU + Attentive Pooling with Focal Loss.
+                  </p>
                 </div>
-                <div className="text-sm font-semibold text-[#34d399] mb-2">Hybrid Neural Learning Engine</div>
-                <p className="text-slate-400 text-xs leading-relaxed mb-4">
-                  Inner joins Pipeline A and B on <code className="text-slate-200">post_id</code>. Batches variable sequences into [B, K_max, 20] tensors. Trains BiGRU + Attentive Pooling + MLP Classifier with Focal Loss.
-                </p>
-                <div className="bg-[#090d16] p-2.5 rounded font-mono text-[11px] text-slate-300 border border-white/5">
-                  Model: CascadeAttentionGRU (BCE / Focal Loss)
+                <div className="bg-[#070b14] p-3 rounded-lg font-mono text-[11px] text-slate-300 border border-white/5">
+                  Model: CascadeAttentionGRU (BCE / Focal)
                 </div>
               </div>
             </div>

@@ -42,47 +42,56 @@ python -m pipeline_w.multiseed`;
   const references = [
     {
       id: "1",
+      venue: "Sci Rep '25",
       citation: "J. Wang et al. \"Fusing Temporal and Structural Information via Subgraph Sampling and Multi-Head Attention for Information Cascade Prediction.\" Scientific Reports, 15:6801, 2025."
     },
     {
       id: "2",
+      venue: "ACM CIKM '17",
       citation: "Q. Cao et al. \"DeepHawkes: Bridging the Gap between Prediction and Understanding of Information Cascades.\" ACM CIKM, pp. 1149–1158, 2017."
     },
     {
       id: "3",
+      venue: "ACM WSDM '17",
       citation: "A. Paranjape, A. R. Benson, and J. Leskovec. \"Motifs in Temporal Networks.\" ACM WSDM, pp. 601–610, 2017."
     },
     {
       id: "4",
+      venue: "IEEE ICDE '19",
       citation: "X. Chen et al. \"Information Diffusion Prediction via Recurrent Cascades Convolution.\" IEEE ICDE, pp. 770–781, 2019."
     },
     {
       id: "5",
+      venue: "Neurocomputing '21",
       citation: "C. Chen et al. \"Information Cascade Prediction with Sequential and Graphical Neural Networks.\" Neurocomputing, 454:443–453, 2021."
     },
     {
       id: "6",
+      venue: "ICLR '20",
       citation: "E. Rossi et al. \"Temporal Graph Networks for Deep Learning on Dynamic Graphs.\" ICLR Workshop on Graph Representation Learning, 2020."
     },
     {
       id: "7",
+      venue: "Mgmt Sci '16",
       citation: "S. Goel, A. Anderson, J. Hofman, and D. J. Watts. \"The Structural Virality of Online Diffusion.\" Management Science, 62(1):180–196, 2016."
     },
     {
       id: "8",
+      venue: "IEEE TKDE '23",
       citation: "X. Xu, F. Zhou, K. Zhang, S. Liu, and G. Trajcevski. \"CasFlow: Exploring Hierarchical Structures and Propagation Uncertainty for Cascade Prediction.\" IEEE TKDE, 35(4):3484–3499, 2023."
     }
   ];
 
   return (
-    <section id="docs" className="py-20 relative bg-[#090d16]/50 border-t border-white/5">
+    <section id="docs" className="py-24 relative bg-[#070b14]/70 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#38bdf8] block mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-cyan text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4]" />
             09 • Documentation &amp; Citations
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
             Developer Portal &amp; Reproducibility Guide
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
@@ -91,41 +100,49 @@ python -m pipeline_w.multiseed`;
         </div>
 
         {/* Quickstart Code Block */}
-        <div className="bg-[#151d30] border border-white/10 rounded-2xl p-6 sm:p-8 mb-12">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h3 className="font-display font-bold text-xl text-white">
-                Reproducing the Benchmark Pipelines
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm mt-1">
-                Execute directly from the root of the repository:
-              </p>
+        <div className="glass-panel overflow-hidden mb-12 border border-white/12">
+          {/* Terminal Window Header */}
+          <div className="bg-[#0b0f19] px-4 py-3 border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+              <span className="text-xs font-mono text-slate-400 ml-2">bash — casmotif-pipeline</span>
             </div>
+
             <button
               onClick={copyCode}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-1.5 transition-all"
+              className="px-3 py-1 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-1.5 transition-all active:scale-95"
             >
-              {copied ? '✓ Copied!' : '📋 Copy Script'}
+              {copied ? '✓ Copied to Clipboard!' : '📋 Copy Script'}
             </button>
           </div>
 
-          <div className="bg-[#05070c] border border-white/10 rounded-xl overflow-hidden font-mono text-xs text-slate-300 p-5 overflow-x-auto leading-relaxed">
+          <div className="bg-[#05070d] p-5 sm:p-6 overflow-x-auto font-mono text-xs text-slate-200 leading-relaxed">
             <pre><code>{codeString}</code></pre>
           </div>
         </div>
 
         {/* References Section */}
-        <div className="bg-[#151d30] border border-white/10 rounded-2xl p-6 sm:p-8">
-          <h3 className="font-display font-bold text-xl text-white mb-2">Academic References</h3>
+        <div className="glass-panel p-6 sm:p-8">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] pulse-indicator" />
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-white">Academic References</h3>
+          </div>
           <p className="text-slate-400 text-xs sm:text-sm mb-6">
             Key literature establishing foundational cascade theory, temporal motifs, and baseline architectures:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {references.map((r) => (
-              <div key={r.id} className="glass-card p-4 text-xs text-slate-300 leading-relaxed">
-                <span className="font-mono text-[#38bdf8] font-bold mr-2">[{r.id}]</span>
-                <span>{r.citation}</span>
+              <div key={r.id} className="glass-card p-4 text-xs text-slate-300 leading-relaxed hover:border-white/20 transition-all flex items-start gap-3">
+                <span className="font-mono text-[#38bdf8] font-bold text-sm">[{r.id}]</span>
+                <div className="flex-1">
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded badge-indigo font-bold mr-2 inline-block mb-1">
+                    {r.venue}
+                  </span>
+                  <span>{r.citation}</span>
+                </div>
               </div>
             ))}
           </div>

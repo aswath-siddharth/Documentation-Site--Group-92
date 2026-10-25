@@ -12,12 +12,13 @@ export default function Methodology() {
       complexity: "O(1)",
       condition: "¬cycle ∧ ¬dyad ∧ ¬chain ∧ ¬star",
       significance: "Default 1-to-1 linear forwarding with out-degree 0 and depth < 3.",
+      accent: "#38bdf8",
       svg: (
-        <svg className="w-16 h-16 mx-auto" viewBox="0 0 100 100">
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 100 100">
           <circle cx="25" cy="50" r="14" fill="#38bdf8" />
-          <circle cx="75" cy="50" r="12" fill="#818cf8" />
-          <line x1="39" y1="50" x2="63" y2="50" stroke="#fff" strokeWidth="2.5" />
-          <polygon points="63 46 70 50 63 54" fill="#fff" />
+          <circle cx="75" cy="50" r="13" fill="#818cf8" />
+          <line x1="39" y1="50" x2="61" y2="50" stroke="#fff" strokeWidth="2.5" />
+          <polygon points="61 46 68 50 61 54" fill="#fff" />
           <text x="25" y="54" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">u</text>
           <text x="75" y="54" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">v</text>
         </svg>
@@ -29,8 +30,9 @@ export default function Methodology() {
       complexity: "O(1)",
       condition: "deg_out(u) ≥ 1 on G_{t−}",
       significance: "Parent acts as broadcast hub. Captures viral branching hot-spots.",
+      accent: "#f59e0b",
       svg: (
-        <svg className="w-16 h-16 mx-auto" viewBox="0 0 100 100">
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 100 100">
           <circle cx="25" cy="50" r="15" fill="#f59e0b" />
           <circle cx="75" cy="25" r="11" fill="#38bdf8" />
           <circle cx="75" cy="75" r="11" fill="#34d399" />
@@ -48,15 +50,19 @@ export default function Methodology() {
       complexity: "O(1)",
       condition: "depth(u) + 1 ≥ 3",
       significance: "Multi-hop conversation lineage. Captures organic word-of-mouth viral depth.",
+      accent: "#6366f1",
       svg: (
-        <svg className="w-20 h-16 mx-auto" viewBox="0 0 120 100">
-          <circle cx="20" cy="50" r="10" fill="#94a3b8" />
-          <circle cx="50" cy="50" r="10" fill="#38bdf8" />
-          <circle cx="80" cy="50" r="10" fill="#818cf8" />
-          <circle cx="108" cy="50" r="10" fill="#c084fc" />
-          <line x1="30" y1="50" x2="40" y2="50" stroke="#fff" strokeWidth="2" />
-          <line x1="60" y1="50" x2="70" y2="50" stroke="#fff" strokeWidth="2" />
-          <line x1="90" y1="50" x2="98" y2="50" stroke="#fff" strokeWidth="2" />
+        <svg className="w-24 h-20 mx-auto" viewBox="0 0 120 100">
+          <circle cx="18" cy="50" r="9" fill="#94a3b8" />
+          <circle cx="48" cy="50" r="9" fill="#38bdf8" />
+          <circle cx="78" cy="50" r="9" fill="#818cf8" />
+          <circle cx="106" cy="50" r="9" fill="#c084fc" />
+          <line x1="27" y1="50" x2="39" y2="50" stroke="#fff" strokeWidth="2" />
+          <line x1="57" y1="50" x2="69" y2="50" stroke="#fff" strokeWidth="2" />
+          <line x1="87" y1="50" x2="97" y2="50" stroke="#fff" strokeWidth="2" />
+          <polygon points="38 47 43 50 38 53" fill="#fff" />
+          <polygon points="68 47 73 50 68 53" fill="#fff" />
+          <polygon points="96 47 101 50 96 53" fill="#fff" />
         </svg>
       )
     },
@@ -64,14 +70,17 @@ export default function Methodology() {
       col: "Col 3",
       name: "Ping-Pong Dyad",
       complexity: "O(log d_v)",
-      condition: "u ∈ N_out(v) in G_{t−}",
+      condition: "u ∈ N_out(v) on G_{t−}",
       significance: "Mutual interaction u ↔ v. Signals bilateral debate and intense engagement.",
+      accent: "#a855f7",
       svg: (
-        <svg className="w-16 h-16 mx-auto" viewBox="0 0 100 100">
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 100 100">
           <circle cx="28" cy="50" r="13" fill="#a855f7" />
           <circle cx="72" cy="50" r="13" fill="#a855f7" />
-          <path d="M 38 42 C 50 32, 60 32, 62 40" fill="none" stroke="#fff" strokeWidth="2.2" />
-          <path d="M 62 58 C 50 68, 40 68, 38 60" fill="none" stroke="#fff" strokeWidth="2.2" />
+          <path d="M 38 42 C 50 32, 60 32, 62 40" fill="none" stroke="#38bdf8" strokeWidth="2.5" />
+          <polygon points="61 36 67 42 59 43" fill="#38bdf8" />
+          <path d="M 62 58 C 50 68, 40 68, 38 60" fill="none" stroke="#f43f5e" strokeWidth="2.5" />
+          <polygon points="39 64 33 58 41 57" fill="#f43f5e" />
           <text x="28" y="54" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">u</text>
           <text x="72" y="54" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">v</text>
         </svg>
@@ -83,28 +92,33 @@ export default function Methodology() {
       complexity: "O(d_v log d_w)",
       condition: "∃ w ∈ N_out(v) s.t. u ∈ N_out(w)",
       significance: "Directed triangle loop u → v → w → u. Dense conversational triad closure.",
+      accent: "#ec4899",
       svg: (
-        <svg className="w-16 h-16 mx-auto" viewBox="0 0 100 100">
+        <svg className="w-20 h-20 mx-auto" viewBox="0 0 100 100">
           <circle cx="50" cy="22" r="11" fill="#ec4899" />
           <circle cx="25" cy="72" r="11" fill="#ec4899" />
           <circle cx="75" cy="72" r="11" fill="#ec4899" />
           <line x1="42" y1="31" x2="31" y2="61" stroke="#fff" strokeWidth="2" />
           <line x1="36" y1="72" x2="64" y2="72" stroke="#fff" strokeWidth="2" />
           <line x1="69" y1="61" x2="58" y2="31" stroke="#fff" strokeWidth="2" />
+          <text x="50" y="26" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">u</text>
+          <text x="25" y="76" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">v</text>
+          <text x="75" y="76" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">w</text>
         </svg>
       )
     }
   ];
 
   return (
-    <section id="methodology" className="py-20 relative">
+    <section id="methodology" className="py-24 relative border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#818cf8] block mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-indigo text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" />
             02 • Proposed Methodology
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
             GNN-Free Causal Motif Forecasting
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
@@ -113,75 +127,80 @@ export default function Methodology() {
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10 p-1.5 rounded-2xl bg-[#080d18] border border-white/10 max-w-fit mx-auto">
           <button
             onClick={() => setActiveTab('csr')}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`px-4 sm:px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
               activeTab === 'csr'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
-            1. Dynamic CSR Representation
+            <span>1. Dynamic CSR Layout</span>
           </button>
           <button
             onClick={() => setActiveTab('motifs')}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`px-4 sm:px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
               activeTab === 'motifs'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
-            2. 5 Causal Motifs on G_t−
+            <span>2. 5 Causal Motifs on G<sub>t−</sub></span>
           </button>
           <button
             onClick={() => setActiveTab('features')}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`px-4 sm:px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
               activeTab === 'features'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
-            3. 15-D Causal Event Vectors
+            <span>3. 15-D Causal Event Vectors</span>
           </button>
           <button
             onClick={() => setActiveTab('sequence')}
-            className={`px-5 py-2.5 rounded-xl font-semibold text-sm transition-all ${
+            className={`px-4 sm:px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center gap-2 ${
               activeTab === 'sequence'
-                ? 'bg-[#6366f1] text-white shadow-lg shadow-[#6366f1]/30'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                ? 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white shadow-lg shadow-[#6366f1]/30'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
           >
-            4. Attentive Sequence Learner
+            <span>4. Attentive Sequence Head</span>
           </button>
         </div>
 
         {/* Tab 1: CSR Graph */}
         {activeTab === 'csr' && (
-          <div className="glass-card p-8">
-            <h3 className="font-display font-bold text-2xl text-white mb-3">
-              Why Compressed Sparse Row (CSR)? Replacing NetworkX Overhead
-            </h3>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-              Standard graph packages (e.g. NetworkX) allocate separate Python dictionary objects per node, causing memory fragmentation and pointer-chasing latency in the innermost motif search loop. CasMotif uses a <strong className="text-white">flat 1D contiguous RAM layout</strong>:
-            </p>
+          <div className="glass-panel p-6 sm:p-8 animate-in fade-in duration-300">
+            <div className="max-w-3xl mb-6">
+              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-cyan uppercase mb-2 inline-block">
+                Contiguous Flat Memory Buffer
+              </span>
+              <h3 className="font-display font-bold text-2xl text-white mt-2">
+                Why Compressed Sparse Row (CSR)? Replacing NetworkX Latency
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mt-2">
+                Standard graph packages (e.g. NetworkX) allocate separate Python dictionary objects per node, causing massive memory fragmentation and pointer-chasing latency in the innermost motif search loop. CasMotif uses a <strong className="text-white">flat 1D contiguous RAM layout</strong>:
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#38bdf8]/30 rounded-xl p-5 shadow-inner">
                 <div className="font-mono text-sm font-bold text-[#38bdf8] mb-1">indptr [|V| + 1]</div>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Offset pointer array where slice <code className="text-slate-200">[indptr[u] : indptr[u+1]]</code> marks the start and end offsets of node <em>u</em>&apos;s out-neighbors.
+                  Offset pointer array where slice <code className="text-slate-200 font-mono bg-white/5 px-1 py-0.5 rounded">[indptr[u] : indptr[u+1]]</code> marks the start and end offsets of node <em>u</em>&apos;s out-neighbors.
                 </p>
               </div>
 
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#818cf8]/30 rounded-xl p-5 shadow-inner">
                 <div className="font-mono text-sm font-bold text-[#818cf8] mb-1">indices [|E|]</div>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Stores target neighbor IDs for directed outgoing edges in contiguous RAM buffers with zero pointer chasing.
+                  Stores target neighbor IDs for directed outgoing edges in contiguous RAM buffers with zero pointer chasing and predictable CPU cache hits.
                 </p>
               </div>
 
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#34d399]/30 rounded-xl p-5 shadow-inner">
                 <div className="font-mono text-sm font-bold text-[#34d399] mb-1">timestamps [|E|]</div>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Stores continuous-time arrival timestamp <em>t<sub>i</sub></em> for each edge, enabling microsecond inter-arrival delta computations.
@@ -190,22 +209,28 @@ export default function Methodology() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-[#6366f1]/10 border border-[#6366f1]/30 rounded-xl p-5">
-                <h4 className="font-display font-semibold text-white text-base mb-2">
-                  Slice-Based Neighbor Retrieval in O(1)
-                </h4>
-                <div className="math-block text-sm mb-2">
-                  {"N_{out}(u) = \\text{indices}[\\text{indptr}[u] : \\text{indptr}[u+1]]"}
+              <div className="bg-[#070b14] border border-white/10 rounded-xl p-5">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-display font-bold text-white text-base">
+                    Slice-Based Neighbor Retrieval
+                  </h4>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-cyan">O(1) Complexity</span>
+                </div>
+                <div className="bg-black/50 border border-white/5 rounded-lg p-3 my-2 font-mono text-sm text-[#38bdf8]">
+                  N<sub>out</sub>(u) = indices[indptr[u] : indptr[u+1]]
                 </div>
                 <p className="text-slate-400 text-xs">Direct zero-copy array slicing into contiguous RAM.</p>
               </div>
 
-              <div className="bg-[#06b6d4]/10 border border-[#06b6d4]/30 rounded-xl p-5">
-                <h4 className="font-display font-semibold text-white text-base mb-2">
-                  Instantaneous Degree in O(1)
-                </h4>
-                <div className="math-block text-sm mb-2">
-                  {"\\text{deg}_{out}(u) = \\text{indptr}[u+1] - \\text{indptr}[u]"}
+              <div className="bg-[#070b14] border border-white/10 rounded-xl p-5">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-display font-bold text-white text-base">
+                    Instantaneous Degree Computation
+                  </h4>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-emerald">O(1) Complexity</span>
+                </div>
+                <div className="bg-black/50 border border-white/5 rounded-lg p-3 my-2 font-mono text-sm text-[#34d399]">
+                  deg<sub>out</sub>(u) = indptr[u+1] &minus; indptr[u]
                 </div>
                 <p className="text-slate-400 text-xs">Single-subtraction O(1) time without neighbor iteration.</p>
               </div>
@@ -215,8 +240,8 @@ export default function Methodology() {
 
         {/* Tab 2: 5 Causal Motifs */}
         {activeTab === 'motifs' && (
-          <div>
-            <div className="glass-card p-6 mb-8">
+          <div className="animate-in fade-in duration-300">
+            <div className="glass-panel p-6 mb-8 border-l-4 border-l-[#10b981]">
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-[#10b981] pulse-indicator" />
                 <h3 className="font-display font-bold text-xl text-white">
@@ -230,19 +255,23 @@ export default function Methodology() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {motifs.map((m) => (
-                <div key={m.name} className="glass-card p-5 text-center flex flex-col justify-between">
+                <div key={m.name} className="glass-card p-6 text-center flex flex-col justify-between group hover:border-white/20">
                   <div>
-                    <div className="h-20 flex items-center justify-center mb-3">{m.svg}</div>
+                    <div className="h-24 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                      {m.svg}
+                    </div>
                     <div className="flex items-center justify-center gap-2 mb-2">
-                      <span className="font-mono text-xs px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                      <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-white/10 text-slate-300 font-semibold">
                         {m.col}
                       </span>
-                      <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#06b6d4]/20 text-[#38bdf8]">
+                      <span className="font-mono text-xs px-2.5 py-0.5 rounded bg-[#06b6d4]/20 text-[#38bdf8] font-semibold border border-[#06b6d4]/30">
                         {m.complexity}
                       </span>
                     </div>
                     <h4 className="font-display font-bold text-lg text-white mb-1.5">{m.name}</h4>
-                    <p className="font-mono text-xs text-slate-400 mb-2">{m.condition}</p>
+                    <div className="font-mono text-xs text-slate-400 bg-black/40 py-1 px-2 rounded border border-white/5 mb-3">
+                      {m.condition}
+                    </div>
                     <p className="text-xs text-slate-300 leading-relaxed">{m.significance}</p>
                   </div>
                 </div>
@@ -253,20 +282,25 @@ export default function Methodology() {
 
         {/* Tab 3: 15-D Features */}
         {activeTab === 'features' && (
-          <div className="glass-card p-8">
-            <h3 className="font-display font-bold text-2xl text-white mb-3">
-              The 15-Dimensional Causal Event Feature Vector
-            </h3>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-              Decomposed into 4 complementary groups capturing micro-motifs, macro tree hierarchy, arrival velocities, and user dormancy:
-            </p>
+          <div className="glass-panel p-6 sm:p-8 animate-in fade-in duration-300">
+            <div className="max-w-3xl mb-6">
+              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-purple uppercase mb-2 inline-block">
+                Feature Space Architecture
+              </span>
+              <h3 className="font-display font-bold text-2xl text-white mt-2">
+                The 15-Dimensional Causal Event Feature Vector
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mt-2">
+                Decomposed into 4 complementary groups capturing micro-motifs, macro tree hierarchy, arrival velocities, and user dormancy:
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Group 1 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#38bdf8]/30 rounded-xl p-5 shadow-inner">
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <h4 className="font-display font-bold text-white text-base">Group 1: Higher-Order Motifs</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#38bdf8]/15 text-[#38bdf8]">5-D (Cols 0–4)</span>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-cyan font-bold">5-D (Cols 0–4)</span>
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-300">
@@ -293,10 +327,10 @@ export default function Methodology() {
               </div>
 
               {/* Group 2 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#818cf8]/30 rounded-xl p-5 shadow-inner">
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <h4 className="font-display font-bold text-white text-base">Group 2: Tree Structure</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#818cf8]/15 text-[#818cf8]">3-D (Cols 5, 6, 11)</span>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-indigo font-bold">3-D (Cols 5, 6, 11)</span>
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-300">
@@ -309,16 +343,16 @@ export default function Methodology() {
                   </li>
                   <li className="flex justify-between items-center text-slate-300">
                     <span className="font-mono text-[#818cf8]">Col 11: descendant_count</span>
-                    <span className="text-slate-400">Σ_{"{w ∈ Subtree(u)}"} 1 (ancestor walk)</span>
+                    <span className="text-slate-400">Σ 1 (Subtree ancestor walk)</span>
                   </li>
                 </ul>
               </div>
 
               {/* Group 3 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#34d399]/30 rounded-xl p-5 shadow-inner">
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <h4 className="font-display font-bold text-white text-base">Group 3: Continuous Time</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#34d399]/15 text-[#34d399]">4-D (Cols 14, 12, 8, 13)</span>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-emerald font-bold">4-D (Cols 14, 12, 8, 13)</span>
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-300">
@@ -341,10 +375,10 @@ export default function Methodology() {
               </div>
 
               {/* Group 4 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-5">
+              <div className="bg-[#070b14] border border-[#c084fc]/30 rounded-xl p-5 shadow-inner">
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <h4 className="font-display font-bold text-white text-base">Group 4: User Dynamics</h4>
-                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-[#c084fc]/15 text-[#c084fc]">3-D (Cols 7, 10, 9)</span>
+                  <span className="text-xs font-mono px-2 py-0.5 rounded badge-purple font-bold">3-D (Cols 7, 10, 9)</span>
                 </div>
                 <ul className="space-y-2.5 text-xs">
                   <li className="flex justify-between items-center text-slate-300">
@@ -367,19 +401,24 @@ export default function Methodology() {
 
         {/* Tab 4: Attentive Sequence Learner */}
         {activeTab === 'sequence' && (
-          <div className="glass-card p-8">
-            <h3 className="font-display font-bold text-2xl text-white mb-3">
-              Sequence Architecture Pipeline
-            </h3>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-              Given an observed continuous sequence <code className="font-mono text-[#38bdf8]">X ∈ ℝ^{"{K × 15}"}</code>, the deep sequence learner executes across three stages:
-            </p>
+          <div className="glass-panel p-6 sm:p-8 animate-in fade-in duration-300">
+            <div className="max-w-3xl mb-6">
+              <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-emerald uppercase mb-2 inline-block">
+                Deep Neural Architecture
+              </span>
+              <h3 className="font-display font-bold text-2xl text-white mt-2">
+                Sequence Architecture Pipeline
+              </h3>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mt-2">
+                Given an observed continuous sequence <code className="font-mono text-[#38bdf8] px-1.5 py-0.5 rounded bg-white/5">X &isin; &reals;<sup>K &times; 15</sup></code>, the deep sequence learner executes across three stages:
+              </p>
+            </div>
 
             <div className="space-y-6">
               {/* Stage 1 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-6 h-6 rounded-full bg-[#6366f1] text-white font-bold text-xs flex items-center justify-center">1</span>
+              <div className="bg-[#070b14] border border-[#6366f1]/30 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-7 h-7 rounded-lg bg-[#6366f1] text-white font-bold text-xs flex items-center justify-center">1</span>
                   <h4 className="font-display font-bold text-white text-lg">
                     Bidirectional GRU Encoder (Temporal Evolution)
                   </h4>
@@ -387,31 +426,32 @@ export default function Methodology() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-3">
                   Processes continuous forward-backward context per edge representation:
                 </p>
-                <div className="math-block text-sm">
-                  {"H = \\text{BiGRU}(X), \\quad H \\in \\mathbb{R}^{K \\times 2D}, \\quad D = 64"}
+                <div className="bg-black/50 border border-white/5 rounded-lg p-3 font-mono text-sm text-[#818cf8]">
+                  H = BiGRU(X), &nbsp;&nbsp; H &isin; &reals;<sup>K &times; 2D</sup>, &nbsp;&nbsp; D = 64
                 </div>
               </div>
 
               {/* Stage 2 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-6 h-6 rounded-full bg-[#06b6d4] text-white font-bold text-xs flex items-center justify-center">2</span>
+              <div className="bg-[#070b14] border border-[#06b6d4]/30 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-7 h-7 rounded-lg bg-[#06b6d4] text-white font-bold text-xs flex items-center justify-center">2</span>
                   <h4 className="font-display font-bold text-white text-lg">
                     Learned Attentive Pooling Head (Linear O(K) Complexity)
                   </h4>
                 </div>
                 <p className="text-slate-400 text-xs sm:text-sm mb-3">
-                  Assigns importance weights <em className="text-white">α<sub>j</sub></em> across variable-length history. Padded tokens receive <code className="font-mono text-slate-200">s_j = −10⁹</code> before softmax, strictly zeroing out sequence padding masks:
+                  Assigns importance weights <em className="text-white">α<sub>j</sub></em> across variable-length history. Padded tokens receive <code className="font-mono text-slate-200 bg-white/5 px-1 py-0.5 rounded">s<sub>j</sub> = −10⁹</code> before softmax, strictly zeroing out sequence padding masks:
                 </p>
-                <div className="math-block text-sm">
-                  {"s_j = w_2^T \\tanh(W_1 h_j + b_1) + b_2, \\quad \\alpha_j = \\frac{\\exp(s_j)}{\\sum_k \\exp(s_k)}, \\quad c = \\sum_{j=1}^K \\alpha_j h_j"}
+                <div className="bg-black/50 border border-white/5 rounded-lg p-3 font-mono text-sm text-[#38bdf8] overflow-x-auto space-y-1">
+                  <div>s<sub>j</sub> = w<sub>2</sub><sup>T</sup> tanh(W<sub>1</sub> h<sub>j</sub> + b<sub>1</sub>) + b<sub>2</sub></div>
+                  <div>&alpha;<sub>j</sub> = exp(s<sub>j</sub>) / &sum;<sub>k</sub> exp(s<sub>k</sub>), &nbsp;&nbsp; c = &sum;<sub>j=1</sub><sup>K</sup> &alpha;<sub>j</sub> h<sub>j</sub></div>
                 </div>
               </div>
 
               {/* Stage 3 */}
-              <div className="bg-[#090d16] border border-white/10 rounded-xl p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-6 h-6 rounded-full bg-[#10b981] text-white font-bold text-xs flex items-center justify-center">3</span>
+              <div className="bg-[#070b14] border border-[#10b981]/30 rounded-xl p-6 shadow-inner">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="w-7 h-7 rounded-lg bg-[#10b981] text-white font-bold text-xs flex items-center justify-center">3</span>
                   <h4 className="font-display font-bold text-white text-lg">
                     Multi-Layer Perceptron (MLP) Regression Head
                   </h4>
@@ -419,8 +459,9 @@ export default function Methodology() {
                 <p className="text-slate-400 text-xs sm:text-sm mb-3">
                   Maps pooled cascade context vector <em className="text-white">c</em> to log-space popularity increment:
                 </p>
-                <div className="math-block text-sm">
-                  {"\\hat{y} = \\text{MLP}(c) = \\log_2(\\Delta\\hat{P} + 1), \\quad \\mathcal{L}_{MSLE} = \\frac{1}{B} \\sum_{i=1}^B (y_i - \\hat{y}_i)^2"}
+                <div className="bg-black/50 border border-white/5 rounded-lg p-3 font-mono text-sm text-[#34d399] overflow-x-auto space-y-1">
+                  <div>y&#770; = MLP(c) = log<sub>2</sub>(&Delta;P&#770; + 1)</div>
+                  <div>&#8466;<sub>MSLE</sub> = (1 / B) &sum;<sub>i=1</sub><sup>B</sup> (y<sub>i</sub> &minus; y&#770;<sub>i</sub>)<sup>2</sup></div>
                 </div>
               </div>
             </div>

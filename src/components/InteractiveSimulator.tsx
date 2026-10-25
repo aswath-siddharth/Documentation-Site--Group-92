@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface CascadeEvent {
   u: string;
@@ -111,13 +111,13 @@ export default function InteractiveSimulator() {
   const [presetKey, setPresetKey] = useState<string>('viral_star');
   const [eventIndex, setEventIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [playSpeed, setPlaySpeed] = useState<number>(1200);
+  const [playSpeed, setPlaySpeed] = useState<number>(1000);
 
   // Inspector States
   const [activeMotif, setActiveMotif] = useState({
     name: "Ready for stream ingestion",
     code: "none",
-    desc: "Press Play or Step to trace dynamic CSR and causal motifs.",
+    desc: "Press Play or Step to trace dynamic CSR arrays and causal motifs in real time.",
     color: "#94a3b8"
   });
 
@@ -151,8 +151,109 @@ export default function InteractiveSimulator() {
 
   const currentPreset = PRESETS[presetKey];
 
+  // Canvas Drawing with DPR scaling
+  const drawCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1;
+    const rect = canvas.getBoundingClientRect();
+    
+    // Check if dimensions need update
+    if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+    }
+
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    // Draw Subtle Grid
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+    ctx.lineWidth = 1;
+    const gridSize = 32;
+    for (let x = 0; x < rect.width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, rect.height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < rect.height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(rect.width, y);
+      ctx.stroke();
+    }
+
+    // Draw Edges
+    for (const e of edgesRef.current) {
+      const uNode = nodesRef.current[e.u];
+      const vNode = nodesRef.current[e.v];
+      if (!uNode || !vNode) continue;
+
+      ctx.beginPath();
+      ctx.strokeStyle = e.color || 'rgba(99, 102, 241, 0.7)';
+      ctx.lineWidth = Math.max(2, e.alpha * 14);
+
+      const dx = vNode.x - uNode.x;
+      const dy = vNode.y - uNode.y;
+      const cx = (uNode.x + vNode.x) / 2 + (dy * 0.12);
+      const cy = (uNode.y + vNode.y) / 2 - (dx * 0.12);
+
+      ctx.moveTo(uNode.x, uNode.y);
+      ctx.quadraticCurveTo(cx, cy, vNode.x, vNode.y);
+      ctx.stroke();
+
+      // Arrow
+      const angle = Math.atan2(vNode.y - cy, vNode.x - cx);
+      const targetX = vNode.x - Math.cos(angle) * 16;
+      const targetY = vNode.y - Math.sin(angle) * 16;
+      ctx.beginPath();
+      ctx.moveTo(targetX, targetY);
+      ctx.lineTo(targetX - 8 * Math.cos(angle - Math.PI / 6), targetY - 8 * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(targetX - 8 * Math.cos(angle + Math.PI / 6), targetY - 8 * Math.sin(angle + Math.PI / 6));
+      ctx.closePath();
+      ctx.fillStyle = e.color || '#38bdf8';
+      ctx.fill();
+    }
+
+    // Draw Nodes
+    for (const id in nodesRef.current) {
+      const n = nodesRef.current[id];
+      const isRoot = (n.depth === 0);
+      const radius = isRoot ? 17 : 14;
+
+      // Outer glow
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, radius + 6, 0, Math.PI * 2);
+      ctx.fillStyle = isRoot ? 'rgba(245, 158, 11, 0.25)' : 'rgba(99, 102, 241, 0.18)';
+      ctx.fill();
+
+      // Inner Circle
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      // Label
+      ctx.font = 'bold 10px JetBrains Mono, Inter, sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, n.x, n.y);
+    }
+
+    ctx.restore();
+  }, []);
+
   // Reset graph data
-  const resetGraph = () => {
+  const resetGraph = useCallback(() => {
     setIsPlaying(false);
     setEventIndex(0);
     setActiveParentNid(-1);
@@ -163,7 +264,7 @@ export default function InteractiveSimulator() {
     setActiveMotif({
       name: "Ready for stream ingestion",
       code: "none",
-      desc: "Press Play or Step to trace dynamic CSR and causal motifs.",
+      desc: "Press Play or Step to trace dynamic CSR arrays and causal motifs in real time.",
       color: "#94a3b8"
     });
 
@@ -183,13 +284,15 @@ export default function InteractiveSimulator() {
     nodeHistoryRef.current[0] = [0];
 
     const canvas = canvasRef.current;
-    const w = canvas ? canvas.width : 500;
+    const rect = canvas ? canvas.getBoundingClientRect() : { width: 500, height: 400 };
+    const w = rect.width || 500;
+
     nodesRef.current[rootName] = {
       id: rootName,
       nid: 0,
-      label: "u0 (Root)",
+      label: "u0",
       x: w / 2,
-      y: 70,
+      y: 65,
       depth: 0,
       color: '#f59e0b'
     };
@@ -202,7 +305,7 @@ export default function InteractiveSimulator() {
     });
 
     drawCanvas();
-  };
+  }, [drawCanvas]);
 
   const getNodeId = (name: string) => {
     if (nodeToIdRef.current[name] === undefined) {
@@ -217,15 +320,16 @@ export default function InteractiveSimulator() {
   const assignNodePosition = (name: string, depth: number) => {
     if (nodesRef.current[name]) return;
     const canvas = canvasRef.current;
-    const width = canvas ? canvas.width : 500;
-    const height = canvas ? canvas.height : 400;
+    const rect = canvas ? canvas.getBoundingClientRect() : { width: 500, height: 400 };
+    const width = rect.width || 500;
+    const height = rect.height || 400;
 
-    const ySpacing = Math.min(65, (height - 110) / 6);
-    const y = 80 + (depth * ySpacing);
+    const ySpacing = Math.min(65, (height - 100) / 6);
+    const y = 65 + (depth * ySpacing);
 
     const nodesAtDepth = Object.values(nodesRef.current).filter(n => n.depth === depth).length;
     const totalSlots = nodesAtDepth + 2;
-    const x = (width / totalSlots) * (nodesAtDepth + 1) + ((Math.random() - 0.5) * 20);
+    const x = (width / totalSlots) * (nodesAtDepth + 1) + ((Math.random() - 0.5) * 16);
 
     let color = '#38bdf8';
     if (depth === 0) color = '#f59e0b';
@@ -237,7 +341,7 @@ export default function InteractiveSimulator() {
       id: name,
       nid: getNodeId(name),
       label: name,
-      x: Math.max(45, Math.min(width - 45, x)),
+      x: Math.max(50, Math.min(width - 50, x)),
       y: y,
       depth: depth,
       color: color
@@ -292,7 +396,7 @@ export default function InteractiveSimulator() {
   };
 
   // Step simulation
-  const step = () => {
+  const step = useCallback(() => {
     if (eventIndex >= currentPreset.events.length) {
       setIsPlaying(false);
       return false;
@@ -391,96 +495,12 @@ export default function InteractiveSimulator() {
 
     drawCanvas();
     return eventIndex + 1 < currentPreset.events.length;
-  };
-
-  // Canvas Drawing
-  const drawCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw Subtle Grid
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < canvas.width; x += 35) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < canvas.height; y += 35) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-
-    // Draw Edges
-    for (const e of edgesRef.current) {
-      const uNode = nodesRef.current[e.u];
-      const vNode = nodesRef.current[e.v];
-      if (!uNode || !vNode) continue;
-
-      ctx.beginPath();
-      ctx.strokeStyle = e.color || 'rgba(99, 102, 241, 0.6)';
-      ctx.lineWidth = Math.max(1.8, e.alpha * 12);
-
-      const dx = vNode.x - uNode.x;
-      const dy = vNode.y - uNode.y;
-      const cx = (uNode.x + vNode.x) / 2 + (dy * 0.15);
-      const cy = (uNode.y + vNode.y) / 2 - (dx * 0.15);
-
-      ctx.moveTo(uNode.x, uNode.y);
-      ctx.quadraticCurveTo(cx, cy, vNode.x, vNode.y);
-      ctx.stroke();
-
-      // Arrow
-      const angle = Math.atan2(vNode.y - cy, vNode.x - cx);
-      const targetX = vNode.x - Math.cos(angle) * 14;
-      const targetY = vNode.y - Math.sin(angle) * 14;
-      ctx.beginPath();
-      ctx.moveTo(targetX, targetY);
-      ctx.lineTo(targetX - 7 * Math.cos(angle - Math.PI / 6), targetY - 7 * Math.sin(angle - Math.PI / 6));
-      ctx.lineTo(targetX - 7 * Math.cos(angle + Math.PI / 6), targetY - 7 * Math.sin(angle + Math.PI / 6));
-      ctx.closePath();
-      ctx.fillStyle = e.color || '#38bdf8';
-      ctx.fill();
-    }
-
-    // Draw Nodes
-    for (const id in nodesRef.current) {
-      const n = nodesRef.current[id];
-      const isRoot = (n.depth === 0);
-      const radius = isRoot ? 16 : 13;
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, radius + 5, 0, Math.PI * 2);
-      ctx.fillStyle = isRoot ? 'rgba(245, 158, 11, 0.2)' : 'rgba(99, 102, 241, 0.15)';
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = n.color;
-      ctx.fill();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = '#ffffff';
-      ctx.stroke();
-
-      ctx.font = 'bold 9px Inter, sans-serif';
-      ctx.fillStyle = '#ffffff';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(n.label, n.x, n.y);
-    }
-  };
+  }, [currentPreset.events, eventIndex, drawCanvas]);
 
   const stepRef = useRef(step);
   useEffect(() => {
     stepRef.current = step;
-  });
+  }, [step]);
 
   // Continuous animation timer
   useEffect(() => {
@@ -498,40 +518,42 @@ export default function InteractiveSimulator() {
     };
   }, [isPlaying, playSpeed]);
 
-  // Handle Canvas Resize and initial graph setup
+  // Handle Resize
   useEffect(() => {
+    resetGraph();
     const handleResize = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (rect) {
-        canvas.width = rect.width;
-        canvas.height = Math.max(380, rect.height);
-        drawCanvas();
-      }
+      drawCanvas();
     };
-    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [presetKey, resetGraph, drawCanvas]);
 
   const { indptr, indices } = csrState;
-
   const sliceStart = activeParentNid >= 0 && indptr[activeParentNid] !== undefined ? indptr[activeParentNid] : -1;
   const sliceEnd = activeParentNid >= 0 && indptr[activeParentNid + 1] !== undefined ? indptr[activeParentNid + 1] : -1;
 
   const vectorLabels = ["Sing", "Star", "Chn", "Dyad", "Cyc", "Dpth", "OutD", "Ncnt", "tRoot", "Irec", "Tidl", "Desc", "dtM", "CumP", "dtEd"];
   const vectorMax = [1, 1, 1, 1, 1, 6, 8, 15, 900, 1, 600, 10, 300, 15, 300];
 
+  const getViralityBadge = (val: number) => {
+    if (val > 4000) return { label: "Viral Explosion 🔥", color: "bg-[#f43f5e]/20 text-[#fb7185] border-[#f43f5e]/40" };
+    if (val > 800) return { label: "High Momentum ⚡", color: "bg-[#f59e0b]/20 text-[#fbbf24] border-[#f59e0b]/40" };
+    if (val > 100) return { label: "Steady Diffusion 📈", color: "bg-[#10b981]/20 text-[#34d399] border-[#10b981]/40" };
+    return { label: "Early Stage 💬", color: "bg-[#38bdf8]/20 text-[#38bdf8] border-[#38bdf8]/40" };
+  };
+
+  const viralityBadge = getViralityBadge(predictedInc);
+
   return (
-    <section id="simulator" className="py-20 relative">
+    <section id="simulator" className="py-24 relative border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-semibold tracking-wider uppercase text-[#10b981] block mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-emerald text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] pulse-indicator" />
             04 • Interactive Simulation
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight mb-4">
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-4">
             Live Diffusion &amp; Causal Motif Simulator
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
@@ -540,20 +562,18 @@ export default function InteractiveSimulator() {
         </div>
 
         {/* Simulator Wrapper */}
-        <div className="bg-[#151d30] border border-[#6366f1]/30 rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
+        <div className="glass-panel overflow-hidden border border-[#6366f1]/30">
           {/* Controls Bar */}
-          <div className="p-4 sm:p-5 bg-black/40 border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <div className="p-4 sm:p-5 bg-[#060912]/80 border-b border-white/10 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <label htmlFor="sim-preset-dropdown" className="text-xs font-semibold text-slate-300">Preset Cascade:</label>
+              <label htmlFor="sim-preset-dropdown" className="text-xs font-semibold text-slate-300">Preset Scenario:</label>
               <select
                 id="sim-preset-dropdown"
                 value={presetKey}
                 onChange={(e) => {
-                  const newKey = e.target.value;
-                  setPresetKey(newKey);
-                  resetGraph();
+                  setPresetKey(e.target.value);
                 }}
-                className="bg-[#090d16] border border-white/10 text-white text-xs rounded-lg px-3 py-1.5 focus:border-[#6366f1] outline-none"
+                className="bg-[#090d16] border border-white/15 text-white text-xs rounded-lg px-3 py-2 focus:border-[#6366f1] outline-none font-medium cursor-pointer"
               >
                 <option value="viral_star">Viral News Burst (Star Fork Hubs)</option>
                 <option value="deep_chain">Deep Conversational Debate (Directed Chains)</option>
@@ -562,7 +582,7 @@ export default function InteractiveSimulator() {
               </select>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <button
                 onClick={() => {
                   if (eventIndex >= currentPreset.events.length) {
@@ -570,13 +590,13 @@ export default function InteractiveSimulator() {
                   }
                   setIsPlaying(!isPlaying);
                 }}
-                className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 active:scale-95 ${
                   isPlaying 
-                    ? 'bg-rose-600 text-white hover:bg-rose-700' 
-                    : 'bg-[#6366f1] text-white hover:bg-[#4f46e5] shadow-lg shadow-[#6366f1]/30'
+                    ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-lg shadow-rose-600/30' 
+                    : 'bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white hover:brightness-110 shadow-lg shadow-[#6366f1]/35'
                 }`}
               >
-                {isPlaying ? '⏸ Pause' : '▶ Play Stream'}
+                {isPlaying ? '⏸ Pause Stream' : '▶ Play Stream'}
               </button>
 
               <button
@@ -584,14 +604,14 @@ export default function InteractiveSimulator() {
                   setIsPlaying(false);
                   step();
                 }}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
+                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 border border-white/12 text-slate-200 hover:bg-white/10 hover:text-white transition-all active:scale-95"
               >
                 Step Event ⏭
               </button>
 
               <button
                 onClick={resetGraph}
-                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10"
+                className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 border border-white/12 text-slate-300 hover:bg-white/10 hover:text-white transition-all"
               >
                 Reset
               </button>
@@ -599,74 +619,86 @@ export default function InteractiveSimulator() {
               <select
                 value={playSpeed}
                 onChange={(e) => setPlaySpeed(Number(e.target.value))}
-                className="bg-[#090d16] border border-white/10 text-slate-300 text-xs rounded-lg px-2 py-1.5 outline-none"
+                className="bg-[#090d16] border border-white/15 text-slate-300 text-xs rounded-lg px-2.5 py-2 outline-none font-mono"
               >
-                <option value={1800}>0.7x</option>
-                <option value={1200}>1.0x</option>
-                <option value={600}>2.0x</option>
+                <option value={1500}>0.7x</option>
+                <option value={1000}>1.0x</option>
+                <option value={500}>2.0x</option>
               </select>
             </div>
           </div>
 
           {/* Simulator Body */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[480px]">
             {/* Left: Canvas Graph Panel */}
-            <div className="lg:col-span-7 bg-[#090c14] relative border-b lg:border-b-0 lg:border-r border-white/10 min-h-[380px] flex flex-col">
-              <div className="absolute top-3 left-3 bg-[#0d121f]/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono flex gap-4 text-slate-300 z-10">
+            <div className="lg:col-span-7 bg-[#05070d] relative border-b lg:border-b-0 lg:border-r border-white/10 min-h-[380px] flex flex-col justify-between">
+              <div className="absolute top-3 left-3 bg-[#0d121f]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs font-mono flex items-center gap-4 text-slate-300 z-10 shadow-lg">
                 <div>Events: <strong className="text-[#38bdf8]">{eventIndex} / {currentPreset.events.length}</strong></div>
                 <div>Time: <strong className="text-[#818cf8]">{eventIndex > 0 ? `${currentPreset.events[eventIndex - 1].t}s` : '0s'}</strong></div>
-                <div>Nodes: <strong className="text-[#34d399]">{csrState.nodeCount}</strong></div>
+                <div>Active Users: <strong className="text-[#34d399]">{csrState.nodeCount}</strong></div>
               </div>
-              <canvas ref={canvasRef} className="w-full h-full block flex-1" />
+
+              {eventIndex > 0 && (
+                <div className="absolute bottom-3 left-3 right-3 bg-[#0d121f]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs text-slate-300 z-10 flex items-center justify-between">
+                  <div className="truncate">
+                    <span className="text-[#38bdf8] font-bold mr-2">Latest Event:</span>
+                    <span className="font-mono text-white">{currentPreset.events[eventIndex - 1].u} &rarr; {currentPreset.events[eventIndex - 1].v}</span>
+                    <span className="text-slate-400 ml-2">({currentPreset.events[eventIndex - 1].text})</span>
+                  </div>
+                </div>
+              )}
+
+              <canvas ref={canvasRef} className="w-full h-full block flex-1" style={{ minHeight: '380px' }} />
             </div>
 
             {/* Right: Real-time CSR & Causal Vector Inspector */}
-            <div className="lg:col-span-5 p-5 bg-[#0d121f] flex flex-col gap-4 overflow-y-auto max-h-[520px]">
+            <div className="lg:col-span-5 p-5 bg-[#0b0f19] flex flex-col gap-4 overflow-y-auto max-h-[580px]">
               {/* Active Motif Detection */}
-              <div className="bg-[#151d30] border border-white/10 rounded-xl p-4">
+              <div className="glass-card p-4 border border-white/10">
                 <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
-                  <span>Causal Motif on G_t−</span>
-                  <span className="text-[#34d399] text-[10px]">Zero Leakage</span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#10b981]" />
+                    Causal Motif on G<sub>t−</sub>
+                  </span>
+                  <span className="text-[#34d399] text-[10px] font-mono px-2 py-0.5 rounded bg-[#10b981]/15">Zero Leakage</span>
                 </div>
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-[#06b6d4]/10 border border-[#06b6d4]/30">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#06b6d4] pulse-indicator flex-shrink-0" />
-                  <div>
-                    <div className="text-sm font-bold" style={{ color: activeMotif.color }}>
-                      {activeMotif.name}
-                    </div>
-                    <div className="text-xs text-slate-400 mt-0.5 leading-snug">
-                      {activeMotif.desc}
-                    </div>
+                <div className="p-3 rounded-xl bg-black/40 border border-white/10">
+                  <div className="text-sm font-bold flex items-center gap-2" style={{ color: activeMotif.color }}>
+                    <span className="w-2 h-2 rounded-full pulse-indicator" style={{ backgroundColor: activeMotif.color }} />
+                    {activeMotif.name}
+                  </div>
+                  <div className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    {activeMotif.desc}
                   </div>
                 </div>
               </div>
 
               {/* Dynamic CSR Memory Slices */}
-              <div className="bg-[#151d30] border border-white/10 rounded-xl p-4">
+              <div className="glass-card p-4 border border-white/10">
                 <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
                   <span>Contiguous CSR Memory Layout</span>
-                  <span className="text-[#818cf8] text-[10px]">O(1) Slice Lookups</span>
+                  <span className="text-[#818cf8] text-[10px] font-mono px-2 py-0.5 rounded bg-[#818cf8]/15">O(1) Array Slices</span>
                 </div>
 
-                <div className="space-y-2 font-mono text-xs">
+                <div className="space-y-3 font-mono text-xs">
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                      <span>indptr [|V|+1]</span>
+                      <span className="font-bold text-[#38bdf8]">indptr [|V|+1]</span>
                       <span className="text-slate-500">offsets</span>
                     </div>
-                    <div className="flex flex-wrap gap-1 bg-black/40 p-2 rounded border border-white/5">
+                    <div className="flex flex-wrap gap-1 bg-black/50 p-2 rounded-lg border border-white/5">
                       {indptr.map((val, idx) => {
                         const isSlice = (idx === activeParentNid || idx === activeParentNid + 1);
                         return (
                           <div
                             key={idx}
-                            className={`px-1.5 py-0.5 rounded text-[11px] border ${
+                            className={`px-1.5 py-0.5 rounded text-[11px] border transition-colors ${
                               isSlice 
-                                ? 'bg-[#6366f1]/30 border-[#818cf8] text-white shadow-sm shadow-[#6366f1]' 
-                                : 'bg-white/5 border-white/5 text-slate-300'
+                                ? 'bg-[#6366f1]/40 border-[#818cf8] text-white shadow-sm shadow-[#6366f1]' 
+                                : 'bg-white/5 border-white/5 text-slate-400'
                             }`}
                           >
-                            <span className="text-[9px] text-slate-500 block leading-tight">{idx}</span>
+                            <span className="text-[8px] text-slate-500 block leading-tight">{idx}</span>
                             <span>{val}</span>
                           </div>
                         );
@@ -676,25 +708,25 @@ export default function InteractiveSimulator() {
 
                   <div>
                     <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                      <span>indices [|E|]</span>
-                      <span className="text-slate-500">contiguous neighbors</span>
+                      <span className="font-bold text-[#06b6d4]">indices [|E|]</span>
+                      <span className="text-slate-500">out-neighbors</span>
                     </div>
-                    <div className="flex flex-wrap gap-1 bg-black/40 p-2 rounded border border-white/5 min-h-[32px]">
+                    <div className="flex flex-wrap gap-1 bg-black/50 p-2 rounded-lg border border-white/5 min-h-[34px]">
                       {indices.length === 0 ? (
-                        <span className="text-slate-500 text-[10px]">[empty]</span>
+                        <span className="text-slate-500 text-[10px] py-1">[empty stream]</span>
                       ) : (
                         indices.map((val, idx) => {
                           const inSlice = (idx >= sliceStart && idx < sliceEnd);
                           return (
                             <div
                               key={idx}
-                              className={`px-1.5 py-0.5 rounded text-[11px] border ${
+                              className={`px-1.5 py-0.5 rounded text-[11px] border transition-colors ${
                                 inSlice 
-                                ? 'bg-[#06b6d4]/30 border-[#06b6d4] text-white' 
-                                : 'bg-white/5 border-white/5 text-slate-300'
+                                ? 'bg-[#06b6d4]/40 border-[#06b6d4] text-white shadow-sm' 
+                                : 'bg-white/5 border-white/5 text-slate-400'
                               }`}
                             >
-                              <span className="text-[9px] text-slate-500 block leading-tight">{idx}</span>
+                              <span className="text-[8px] text-slate-500 block leading-tight">{idx}</span>
                               <span>u{val}</span>
                             </div>
                           );
@@ -706,26 +738,26 @@ export default function InteractiveSimulator() {
               </div>
 
               {/* 15-D Vector Bar Gauge */}
-              <div className="bg-[#151d30] border border-white/10 rounded-xl p-4">
+              <div className="glass-card p-4 border border-white/10">
                 <div className="flex items-center justify-between text-xs text-slate-400 font-semibold uppercase tracking-wider mb-2">
                   <span>15-D Causal Event Vector</span>
-                  <span className="text-[#c084fc] text-[10px]">BiGRU Input</span>
+                  <span className="text-[#c084fc] text-[10px] font-mono px-2 py-0.5 rounded bg-[#c084fc]/15">BiGRU Input</span>
                 </div>
                 <div className="grid grid-cols-5 gap-1.5">
                   {featureVector.map((val, idx) => {
                     const max = vectorMax[idx] || 1;
-                    const pct = Math.min(100, Math.max(8, (val / max) * 100));
+                    const pct = Math.min(100, Math.max(10, (val / max) * 100));
                     return (
                       <div
                         key={idx}
-                        className="bg-black/30 border border-white/5 rounded h-9 relative flex flex-col justify-end overflow-hidden p-0.5"
+                        className="bg-black/50 border border-white/5 rounded-lg h-10 relative flex flex-col justify-end overflow-hidden p-0.5"
                         title={`${vectorLabels[idx]}: ${val}`}
                       >
                         <span className="text-[8px] font-mono text-slate-400 text-center block w-full absolute top-0.5 left-0">
                           {vectorLabels[idx]}
                         </span>
                         <div
-                          className="w-full bg-gradient-to-t from-[#6366f1] to-[#38bdf8] rounded-sm transition-all duration-300"
+                          className="w-full bg-gradient-to-t from-[#6366f1] via-[#06b6d4] to-[#38bdf8] rounded-sm transition-all duration-300"
                           style={{ height: `${pct}%` }}
                         />
                       </div>
@@ -735,16 +767,24 @@ export default function InteractiveSimulator() {
               </div>
 
               {/* Attentive Sequence Prediction */}
-              <div className="bg-[#151d30] border border-[#10b981]/30 rounded-xl p-4 flex items-center justify-between">
-                <div>
-                  <div className="text-xs text-slate-400">Predicted 24h Increment:</div>
-                  <div className="font-display font-bold text-2xl text-[#34d399]">
-                    +{predictedInc.toLocaleString()} retweets
-                  </div>
+              <div className="glass-card p-4 border border-[#10b981]/30 bg-gradient-to-br from-[#10b981]/10 via-[#0d121f] to-transparent">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-xs text-slate-300 font-semibold">Predicted 24h Popularity:</div>
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${viralityBadge.color}`}>
+                    {viralityBadge.label}
+                  </span>
                 </div>
-                <div className="text-right font-mono">
-                  <div className="text-xs text-[#f59e0b]">α_j = {attentionAlpha.toFixed(4)}</div>
-                  <div className="text-base text-[#38bdf8] font-bold">ŷ = {predLog2}</div>
+                <div className="flex items-end justify-between">
+                  <div>
+                    <div className="font-display font-black text-2xl sm:text-3xl text-[#34d399] tracking-tight">
+                      +{predictedInc.toLocaleString()}
+                    </div>
+                    <div className="text-[11px] text-slate-400">retweets in 24 hours</div>
+                  </div>
+                  <div className="text-right font-mono text-xs">
+                    <div className="text-[#fbbf24] font-semibold">&alpha;<sub>j</sub> = {attentionAlpha.toFixed(4)}</div>
+                    <div className="text-base text-[#38bdf8] font-bold">y&#770; = {predLog2}</div>
+                  </div>
                 </div>
               </div>
             </div>
