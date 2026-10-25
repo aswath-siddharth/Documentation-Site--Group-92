@@ -79,7 +79,7 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               &gt; 90% of cascades terminate in under 10 retweets, while rare viral threads explode across multiple orders of magnitude. Training in linear count space creates severe gradient instability.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-sky">
+            <div className="px-3 py-2 rounded-lg bg-slate-100/90 dark:bg-slate-50 border border-slate-300 dark:border-slate-200/70 text-xs font-mono text-ink-sky">
               Target: <span className="text-slate-900">y = log₂(ΔP + 1)</span> (MSLE)
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               Social spread exhibits irregular latencies and prolonged user dormancy followed by sudden bursts. Discrete snapshotting discards exact inter-arrival ordering and latency deltas.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-amber">
+            <div className="px-3 py-2 rounded-lg bg-slate-100/90 dark:bg-slate-50 border border-slate-300 dark:border-slate-200/70 text-xs font-mono text-ink-amber">
               Tracking: <span className="text-slate-900">Δt_edge, Δt_motif, T_idle</span>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function ProblemStatement() {
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               Cascades are not linear paths. Broadcast star hubs (celebrity reposts) carry distinct momentum compared to deep conversational chains or bilateral reciprocal dyads.
             </p>
-            <div className="px-3 py-2 rounded-lg bg-slate-50 border border-slate-200/70 text-xs font-mono text-ink-emerald">
+            <div className="px-3 py-2 rounded-lg bg-slate-100/90 dark:bg-slate-50 border border-slate-300 dark:border-slate-200/70 text-xs font-mono text-ink-emerald">
               Motifs: <span className="text-slate-900">Star, Chain, Dyad, 3-Cycle</span>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function ProblemStatement() {
           </p>
 
           {/* Formatted Mathematical Block */}
-          <div className="bg-slate-50 border border-[#6366f1]/30 rounded-xl p-5 mb-5 shadow-inner">
+          <div className="bg-slate-50 dark:bg-slate-900/40 border border-indigo-300 dark:border-[#6366f1]/30 rounded-xl p-5 mb-5 shadow-sm">
             <div className="text-center font-mono text-base sm:text-lg text-slate-900 mb-3 flex items-center justify-center flex-wrap gap-2">
               <span className="font-bold text-ink-sky">E</span>
               <span>=</span>
@@ -139,7 +139,7 @@ export default function ProblemStatement() {
               <span className="text-slate-600 mx-3">with</span>
               <span className="text-ink-emerald">0 &le; t<sub>1</sub> &le; t<sub>2</sub> &le; &hellip; &le; t<sub>N</sub></span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-200 text-xs text-slate-600">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-slate-300 dark:border-slate-200 text-xs text-slate-600">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#38bdf8]" />
                 <span><strong>u<sub>i</sub> &rarr; v<sub>i</sub></strong>: Parent-to-child retweet</span>
@@ -156,7 +156,7 @@ export default function ProblemStatement() {
           </div>
 
           <p className="text-slate-700 text-sm leading-relaxed">
-            Where user <em className="text-slate-900 font-medium">v<sub>i</sub></em> reshares from parent <em className="text-slate-900 font-medium">u<sub>i</sub></em> at continuous timestamp <em className="text-slate-900 font-medium">t<sub>i</sub></em>. Given events in early observation window <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">t &isin; [0, T_obs]</code> (15m or 1h), predict future popularity increment <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">&Delta;P = P_24h &minus; P_obs</code> at <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-50">T_target = 24h</code>.
+            Where user <em className="text-slate-900 font-medium">v<sub>i</sub></em> reshares from parent <em className="text-slate-900 font-medium">u<sub>i</sub></em> at continuous timestamp <em className="text-slate-900 font-medium">t<sub>i</sub></em>. Given events in early observation window <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-50 border border-slate-300 dark:border-slate-200">t &isin; [0, T_obs]</code> (15m or 1h), predict future popularity increment <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-50 border border-slate-300 dark:border-slate-200">&Delta;P = P_24h &minus; P_obs</code> at <code className="text-ink-sky font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-50 border border-slate-300 dark:border-slate-200">T_target = 24h</code>.
           </p>
         </div>
 
@@ -176,10 +176,10 @@ export default function ProblemStatement() {
             </span>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <div className="overflow-x-auto rounded-xl border border-slate-300 dark:border-slate-200 shadow-sm">
             <table className="w-full text-left text-sm border-collapse min-w-[720px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold text-xs uppercase tracking-wider">
+                <tr className="bg-slate-100 dark:bg-slate-50 border-b border-slate-300 dark:border-slate-200 text-slate-700 dark:text-slate-600 font-semibold text-xs uppercase tracking-wider">
                   <th className="py-3.5 px-4">Model</th>
                   <th className="py-3.5 px-4">Venue</th>
                   <th className="py-3.5 px-4">Core Methodology</th>
@@ -187,7 +187,7 @@ export default function ProblemStatement() {
                   <th className="py-3.5 px-4">CasMotif Advancement</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 bg-slate-50">
+              <tbody className="divide-y divide-slate-300 dark:divide-slate-200 bg-slate-50">
                 {literatureModels.map((m) => (
                   <tr
                     key={m.name}

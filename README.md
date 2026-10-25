@@ -1,6 +1,9 @@
 # CasMotif — Documentation Portal & Research Showcase (Group 92)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Faswath-siddharth%2FDocumentation-Site--Group-92&project-name=casmotif-docs)
+[![Live Site](https://img.shields.io/badge/Live%20Site-documentation--site--group--92.vercel.app-06b6d4?style=flat&logo=vercel)](https://documentation-site-group-92.vercel.app/)
+
+> 🌐 **Live Documentation Portal:** [https://documentation-site-group-92.vercel.app/](https://documentation-site-group-92.vercel.app/)
 
 Interactive Research Documentation Portal and Live Demonstration Showcase for **CasMotif: Information Cascade Prediction via Causal Temporal Motifs and Attentive Sequence Models**.
 
@@ -79,7 +82,7 @@ Documentation-Site--Group-92/
 │       └── loss_curves.png    # Empirical loss curves from model training
 ├── src/
 │   ├── app/
-│   │   ├── globals.css        # Academic dark design system & glassmorphism
+│   │   ├── globals.css        # Academic dark/light design system & glassmorphism
 │   │   ├── layout.tsx         # Root layout with SEO and metadata
 │   │   └── page.tsx           # Assembles all interactive research modules
 │   └── components/
