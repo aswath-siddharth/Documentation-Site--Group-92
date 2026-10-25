@@ -49,7 +49,7 @@ export default function Footer() {
             <h5 className="font-display font-semibold text-slate-900 text-sm mb-3">Resources</h5>
             <ul className="space-y-2">
               <li><a href="#benchmarks" className="hover:text-slate-900 transition-colors">Controlled Benchmarks</a></li>
-              <li><a href="#progress" className="hover:text-slate-900 transition-colors">Progress (≈ 85%)</a></li>
+              <li><a href="#progress" className="hover:text-slate-900 transition-colors">Implementation Status</a></li>
               <li><a href="#team" className="hover:text-slate-900 transition-colors">Research Team</a></li>
               <li><a href="#docs" className="hover:text-slate-900 transition-colors">Developer Portal</a></li>
               <li>

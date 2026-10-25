@@ -26,16 +26,16 @@ export default function ProjectProgress() {
             07 • Implementation Status
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight mb-4">
-            Project Progress (≈ 85% Functional)
+            System Implementation Status
           </h2>
           <p className="text-slate-700 text-base sm:text-lg">
-            Evaluation status for 23CSE498 Project Phase 2 (Panel Review 1) with 10 primary modules verified end-to-end.
+            Evaluation status for 23CSE498 Project Phase 2 with 10 primary modules verified end-to-end.
           </p>
         </div>
 
         {/* Big Progress Card */}
         <div className="glass-panel p-6 sm:p-8 mb-12">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
               <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded badge-cyan uppercase mb-2 inline-block">
                 Production Readiness
@@ -45,15 +45,10 @@ export default function ProjectProgress() {
                 All foundational stages from continuous stream ingestion to multi-seed model evaluation are fully operational.
               </p>
             </div>
-            <div className="flex items-baseline gap-1 bg-gradient-to-r from-[#6366f1]/20 to-[#06b6d4]/20 border border-[#6366f1]/30 px-5 py-2.5 rounded-2xl shadow-lg">
-              <span className="font-display font-black text-4xl sm:text-5xl gradient-text-primary">85</span>
-              <span className="text-xl font-bold text-ink-sky">%</span>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-xl badge-emerald font-semibold text-sm">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] pulse-indicator" />
+              <span>10/10 Core Modules Functional</span>
             </div>
-          </div>
-
-          {/* Giant Progress Bar */}
-          <div className="w-full h-4 bg-slate-50 rounded-full overflow-hidden mb-8 p-0.5 border border-slate-200 shadow-inner">
-            <div className="h-full bg-gradient-to-r from-[#06b6d4] via-[#6366f1] to-[#10b981] rounded-full w-[85%] shine-effect shadow-md" />
           </div>
 
           {/* Modules Grid */}
@@ -77,12 +72,12 @@ export default function ProjectProgress() {
           </div>
         </div>
 
-        {/* Roadmap for Remaining 15% */}
+        {/* Next Milestones Roadmap */}
         <div className="glass-panel p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b] pulse-indicator" />
             <h4 className="font-display font-bold text-xl text-slate-900">
-              Roadmap to 100% Completion (Phase 2 Review 2)
+              Roadmap &amp; Next Milestones (Phase 2 Review 2)
             </h4>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs sm:text-sm">
