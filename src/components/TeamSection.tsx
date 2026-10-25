@@ -46,7 +46,7 @@ export default function TeamSection() {
             08 • Team Details
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight mb-4">
-            Research Team &amp; Faculty Mentorship
+            Research Team &amp; Faculty Mentor
           </h2>
           <p className="text-slate-700 text-base sm:text-lg">
             Department of Computer Science and Engineering • Amrita Vishwa Vidyapeetham • 23CSE498 Project Phase 2
